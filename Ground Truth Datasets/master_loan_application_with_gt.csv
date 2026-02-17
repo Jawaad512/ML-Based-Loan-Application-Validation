@@ -1,0 +1,107 @@
+Persona
+Amount sought (BDT)
+Tenure (Months)
+Offered Security
+Applicant Name
+Father's Name
+Mother's Name
+Marital Status
+Applicant's Date of Birth
+Gender
+Educational Level
+Number of Dependents
+TIN No.
+NID No.
+Present Address
+Permanent Address
+Mobile
+E-mail
+Name of Present Employer
+Designation
+Date of Joining (Present Employer)
+Profession (Self-Employed)
+No. of years in Practice (Self-Employed)
+Clinic/Chamber/Firm/Office Name (Self-Employed)
+Organization Name (Businessman)
+Organization Address (Businessman)
+Years in Present Business
+Total Length of Business
+Monthly Income: Salary
+Monthly Income: Business income
+Monthly Income: Income from Self-Employment
+Monthly Income: Rental Income
+Monthly Income: Interest earning
+Monthly Income: Any other source
+Total Income (X)
+Monthly Expenditure: Loan repayment
+Monthly Expenditure: Other loan & credit Card Installments
+Monthly Expenditure: Rent and Utilities
+"Monthly Expenditure: Living expenses (food, education, clothing, etc.)"
+Monthly Expenditure: Educational Expenses
+Monthly Expenditure: Any others
+Total Expenditure (Y)
+Monthly uncommitted income in BDT (X-Y)
+Liabilities: Loan from Banks
+Liabilities: Credit Card
+Liabilities: Other Liabilities (including any guarantee given)
+Total Liability (Y)
+Assets: Savings A/C with Banks
+Assets: Current A/C with Banks
+Assets: Fixed deposit with Banks
+Assets: Bonds
+Assets: Shares/certificates
+Assets: Land & building
+Assets: Motor vehicles
+Assets: Investment in business
+Assets: Precious metals
+Total Assets (X)
+Net Worth (X-Y)
+Bank Name
+Bank Branch
+Bank Account No.
+Bank Account Type
+Bank Average Balance
+Lender Name
+Lender Branch
+Lender Account No.
+Lender Amount Outstanding
+Lender Monthly Repayment
+Has Credit Card
+Issuing Bank/Institution
+Credit Card No.
+Credit Card Limit
+Credit Card Outstanding
+Reference Name
+Reference Relationship
+Reference Address
+Reference Phone
+Reference Profession
+Reference Email
+GT_Doc_NID_Name
+GT_Doc_NID_No
+GT_Doc_NID_DOB
+GT_Doc_TIN_Name
+GT_Doc_TIN_Number
+GT_Doc_Utility_Name
+GT_Doc_Utility_Address
+GT_Doc_Statement_AccName
+GT_Doc_Statement_AccNo
+GT_Doc_Statement_TotalCredits
+GT_Doc_Statement_ClosingBalance
+GT_Doc_CIB_TotalOutstanding
+GT_Doc_CIB_OverdueAmount
+GT_Doc_CIB_WorstStatus
+GT_Doc_CIB_TradeName
+GT_Doc_CIB_NID
+GT_Doc_TradeLicense_OrgName
+GT_Doc_TradeLicense_LicenseNo
+GT_Doc_Payslip_EmployerName
+GT_Doc_Payslip_NetPay
+GT_Doc_EmpID_No
+GT_Doc_EmpID_OrgName
+GT_Doc_EmpID_Designation
+GT_Doc_EmpID_Name
+GT_Doc_ProfCert_BodyName
+GT_Doc_ProfCert_RegNo
+GT_Doc_ProfCert_Name
+Monthly Uncommitted Income
