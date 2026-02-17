@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+Jensen-Simmons
+Chittagong
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : Elizabeth Osborne                          ACCOUNT NO   : 3472064952
+ADDRESS : House No. 286, Old SadarGan, BagharGan, Bogura, 3314             ACCOUNT TYPE : CURRENT
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 15-JAN-2026
+
+PERIOD  : 01-AUG-2025 TO 15-JAN-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-AUG-25  BALANCE FORWARD                           0.00         0.00    50,000.00
+05-AUG-25  PROFESSIONAL FEES/Schroeder Chamber         0.00   337,047.00   387,047.00
+12-AUG-25  BILLPAY/UTILITY                     143,280.00         0.00   243,767.00
+16-AUG-25  EFT/RENT                            146,915.00         0.00    96,852.00
+20-AUG-25  TRF/INCOMING                              0.00    55,618.00   152,470.00
+23-AUG-25  CC PMT                              148,294.00         0.00     4,176.00
+05-SEP-25  PROFESSIONAL FEES/Schroeder Chamber         0.00   463,827.00   468,003.00
+12-SEP-25  BILLPAY/UTILITY                     159,910.00         0.00   308,093.00
+16-SEP-25  ATM WDL                             184,996.00         0.00   123,097.00
+20-SEP-25  EFT/OTHER INCOME                          0.00    36,554.00   159,651.00
+05-OCT-25  PROFESSIONAL FEES/Schroeder Chamber         0.00   410,164.00   569,815.00
+12-OCT-25  CC PMT                              121,904.00         0.00   447,911.00
+16-OCT-25  ATM WDL                             125,522.00         0.00   322,389.00
+20-OCT-25  EFT/OTHER INCOME                          0.00    80,375.00   402,764.00
+23-OCT-25  TRF/LOAN REPAY                       99,501.00         0.00   303,263.00
+05-NOV-25  PROFESSIONAL FEES/Schroeder Chamber         0.00   358,804.00   662,067.00
+12-NOV-25  BILLPAY/UTILITY                     186,521.00         0.00   475,546.00
+16-NOV-25  EFT/RENT                            202,227.00         0.00   273,319.00
+20-NOV-25  CASH DEP                                  0.00    45,761.00   319,080.00
+05-DEC-25  PROFESSIONAL FEES/Schroeder Chamber         0.00   363,004.00   682,084.00
+12-DEC-25  POS/SHOPPING                         81,989.00         0.00   600,095.00
+16-DEC-25  BILLPAY/UTILITY                      91,810.00         0.00   508,285.00
+20-DEC-25  CASH DEP                                  0.00    24,674.00   532,959.00
+23-DEC-25  CC PMT                               77,776.00         0.00   455,183.00
+28-DEC-25  BILLPAY/UTILITY                      95,014.00         0.00   360,169.00
+05-JAN-26  PROFESSIONAL FEES/Schroeder Chamber         0.00   338,898.00   699,067.00
+12-JAN-26  CASH DEP                                  0.00    47,520.00   746,587.00
+12-JAN-26  POS/SHOPPING                        115,652.00         0.00   630,935.00
+15-JAN-26  TRF/LOAN REPAY                      101,812.00         0.00   529,123.00
+15-JAN-26  CC PMT                               95,288.00         0.00   433,835.00
+15-JAN-26  EFT/RENT                            115,494.00         0.00   318,341.00
+------------------------------------------------------------------------------------------
+                        <span class="bold">TOTALS:                 2,293,905.00  2,562,246.00    318,341.00</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>

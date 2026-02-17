@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application Form</title>
+    <style>
+        :root{
+            --ink: #111827;
+            --muted: #6b7280;
+            --rule: #111827;
+            --bg: #f3f4f6;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-container{
+            background: #fff;
+            max-width: 900px;
+            margin: 24px auto;
+            padding: 28px 36px;
+            box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+            border-top: 8px solid #1e3a8a;
+        }
+
+        .header{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+        .title{
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 0.03em;
+        }
+        .subtitle{
+            color: var(--muted);
+            font-style: italic;
+            margin-top: 4px;
+            font-size: 13px;
+        }
+        .photo-box{
+            width: 110px;
+            height: 120px;
+            border: 2px dashed #9ca3af;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 11px;
+            padding: 6px;
+        }
+
+        .section-title{
+            margin: 18px 0 8px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e5e7eb;
+            font-weight: 800;
+            color: #1e3a8a;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 13px;
+        }
+
+        .note{
+            font-size: 12px;
+            color: var(--muted);
+            margin: 6px 0 10px;
+        }
+
+        table.form-table{
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .form-table td, .form-table th{
+            vertical-align: top;
+            padding: 6px 8px;
+        }
+
+        td.lbl{
+            width: 22%;
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .line{
+            border-bottom: 1px solid var(--rule);
+            height: 24px;
+            width: 100%;
+        }
+
+        .box{
+            border: 1px solid var(--rule);
+            height: 26px;
+            width: 100%;
+        }
+        .box.md{ height: 34px; }
+        .box.lg{ height: 68px; }
+        .box.xl{ height: 98px; }
+
+        .checks{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            padding-top: 2px;
+        }
+        .check{
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            font-size: 12px;
+        }
+        .cb{
+            width: 14px;
+            height: 14px;
+            border: 1.5px solid var(--rule);
+            display: inline-block;
+            flex: 0 0 auto;
+        }
+
+        .grid-2{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        table.matrix{
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        .matrix th, .matrix td{
+            border: 1px solid var(--rule);
+            padding: 6px 8px;
+            vertical-align: middle;
+        }
+        .matrix td{
+            height: 32px; /* ensures comfortable handwriting space */
+        }
+        .matrix th{
+            text-align: left;
+            font-weight: 800;
+            background: #f9fafb;
+        }
+        .amt{ width: 32%; }
+        .row-space td{ padding-top: 10px; }
+
+        .signature-row{
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            margin-top: 24px;
+        }
+        .sig{
+            width: 260px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .sig .line{ height: 28px; }
+
+        .btn{
+            margin-top: 18px;
+            background: #1d4ed8;
+            color: #fff;
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(29,78,216,0.25);
+            font-weight: 700;
+        }
+        .btn:hover{ background: #1e40af; }
+
+        .page-break{
+            page-break-before: always;
+            break-before: page;
+        }
+
+        @page { size: A4; margin: 12mm; }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: #fff; }
+            .form-container{
+                box-shadow: none;
+                margin: 0;
+                max-width: none;
+                padding: 0;
+                border-top: 0;
+            }
+            .title{ font-size: 24px; }
+            .section-title{ color: #000; }
+            .matrix th{ background: #fff; }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="form-container">
+        <div class="header">
+            <div>
+                <h1 class="title">LOAN APPLICATION FORM</h1>
+                <div class="subtitle">Retail Banking Division</div>
+            </div>
+            <div class="photo-box">Affix Photo Here</div>
+        </div>
+
+        <div class="section-title">1. Facility Details</div>
+        <table class="form-table">
+            <tr>
+                <td class="lbl">Persona</td>
+                <td colspan="3">
+                    <span>Businessman</span>
+                    <div class="checks">
+                        <span class="check"><span class="cb" style="background: #111827;"></span> Businessman</span>
+                        <span class="check"><span class="cb"></span> Service Holder</span>
+                        <span class="check"><span class="cb"></span> Student</span>
+                        <span class="check"><span class="cb"></span> Freelancer</span>
+                        <span class="check"><span class="cb"></span> Non-Earner</span>
+                        <span class="check"><span class="cb"></span> Self-Employed</span>
+                        <span class="check"><span class="cb"></span> Landlord</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="lbl">Amount sought (BDT)</td>
+                <td colspan="3"><div class="box md">3050775</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Tenure (months)</td>
+                <td colspan="3"><div class="box md">24</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Offered Security</td>
+                <td colspan="3">
+                    <span>Residence</span>
+                    <div class="checks">
+                        <span class="check"><span class="cb"></span> Vehicle</span>
+                        <span class="check"><span class="cb" style="background: #111827;"></span> Residence</span>
+                        <span class="check"><span class="cb"></span> Land</span>
+                        <span class="check"><span class="cb"></span> None</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="section-title">A. Personal Information</div>
+        <table class="form-table">
+            <tr>
+                <td class="lbl">Full Name</td>
+                <td><div class="line">Pedro Hickman</div></td>
+                <td class="lbl">Father’s Name</td>
+                <td><div class="line">Timothy Perez</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Mother’s Name</td>
+                <td><div class="line">Megan Hampton</div></td>
+                <td class="lbl">Applicant’s Date of Birth</td>
+                <td><div class="box">16-12-1995</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Gender</td>
+                <td>
+                    <div class="checks">
+                        <span class="check"><span class="cb" style="background: #111827;"></span> Male</span>
+                        <span class="check"><span class="cb"></span> Female</span>
+                    </div>
+                </td>
+                <td class="lbl">Marital Status</td>
+                <td>
+                    <div class="checks">
+                        <span class="check"><span class="cb" style="background: #111827;"></span> Married</span>
+                        <span class="check"><span class="cb"></span> Unmarried</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="lbl">Educational Level</td>
+                <td colspan="3">
+                    <div class="checks">
+                        <span class="check"><span class="cb"></span> Below SSC</span>
+                        <span class="check"><span class="cb"></span> SSC</span>
+                        <span class="check"><span class="cb"></span> HSC</span>
+                        <span class="check"><span class="cb" style="background: #111827;"></span> Graduate</span>
+                        <span class="check"><span class="cb"></span> Post Graduate</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="lbl">Number of Dependents</td>
+                <td colspan="3"><div class="box">2</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">TIN No.</td>
+                <td><div class="line">55397194065</div></td>
+                <td class="lbl">NID No.</td>
+                <td><div class="line">23883312888</div></td>
+            </tr>
+        </table>
+
+        <div class="section-title">Contact Details</div>
+        <table class="form-table">
+            <tr>
+                <td class="lbl">Present address</td>
+                <td colspan="3"><div class="box lg">Apartment 3, House No. 50, Middle SubarnaGarh, ManiramGram, Gaibandha, 5177</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Permanent address</td>
+                <td colspan="3"><div class="box lg">Apartment 4, Holding No. 9, Middle DaulatMoor, PalashMati, Naogaon, 2951</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Mobile</td>
+                <td><div class="box">(261)849-0052x97015</div></td>
+                <td class="lbl">E-mail</td>
+                <td><div class="line">lindaarroyo@example.com</div></td>
+            </tr>
+        </table>
+
+        <div class="page-break"></div>
+
+        <div class="section-title">B. Employment Details</div>
+        <div class="note">Fill the section applicable to the applicant.</div>
+
+        <div class="section-title" style="margin-top:10px;">1. For Service Holders</div>
+        <table class="form-table">
+            <tr>
+                <td class="lbl">Name of present employer</td>
+                <td colspan="3"><div class="line"></div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Designation / Functional Designation</td>
+                <td><div class="line"></div></td>
+                <td class="lbl">Date of joining (present employer)</td>
+                <td><div class="box"></div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Previous employer’s name &amp; address</td>
+                <td colspan="3"><div class="box lg"></div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Designation (previous employer)</td>
+                <td><div class="line"></div></td>
+                <td class="lbl">Length of service (previous employer)</td>
+                <td><div class="box"></div></td>
+            </tr>
+        </table>
+
+        <div class="section-title" style="margin-top:14px;">2. For self employed persons / professionals</div>
+        <table class="form-table">
+            <tr>
+                <td class="lbl">Profession</td>
+                <td><div class="line"></div></td>
+                <td class="lbl">No. of years in practice</td>
+                <td><div class="box"></div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Clinic / Chamber / Firm / Office Name</td>
+                <td colspan="3"><div class="line"></div></td>
+            </tr>
+        </table>
+
+        <div class="section-title" style="margin-top:14px;">3. For Businessmen</div>
+        <table class="form-table">
+            <tr>
+                <td class="lbl">Organization Name</td>
+                <td colspan="3"><div class="line">Mooney and Sons</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Organization Address</td>
+                <td colspan="3"><div class="box lg">Studio 8, Holding No. 57, ShibTala Park, FakirHar, Barisal, 5482</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Years in Present Business</td>
+                <td><div class="box">12.0</div></td>
+                <td class="lbl">Total Length of Business</td>
+                <td><div class="box">14.0</div></td>
+            </tr>
+        </table>
+
+        <div class="page-break"></div>
+
+        <div class="section-title">D. Financial Information</div>
+        <div class="section-title" style="margin-top:10px;">1. Income &amp; Expenses</div>
+
+        <div class="grid-2">
+            <table class="matrix">
+                <tr><th>Monthly Income (Amount in Tk.)</th><th class="amt">Amount (BDT)</th></tr>
+                <tr><td>Salary</td><td>0</td></tr>
+                <tr><td>Business income</td><td>433699.0</td></tr>
+                <tr><td>Income from Self-Employment</td><td></td></tr>
+                <tr><td>Rental Income</td><td>0</td></tr>
+                <tr><td>Interest earning</td><td>1489</td></tr>
+                <tr><td>Any other source</td><td>1791</td></tr>
+                <tr><td><strong>Total Income (X)</strong></td><td>436979</td></tr>
+            </table>
+
+            <table class="matrix">
+                <tr><th>Monthly Expenditure (Amount in Tk.)</th><th class="amt">Amount (BDT)</th></tr>
+                <tr><td>Loan repayment</td><td>12860</td></tr>
+                <tr><td>Other loan &amp; credit Card Installments</td><td>10622</td></tr>
+                <tr><td>Rent and Utilities</td><td>36014</td></tr>
+                <tr><td>Living expenses (food, education, clothing, etc.)</td><td>46878</td></tr>
+                <tr><td>Educational Expenses</td><td>10338</td></tr>
+                <tr><td>Any other</td><td>754</td></tr>
+                <tr><td><strong>Total Expenditure (Y)</strong></td><td>117466</td></tr>
+            </table>
+        </div>
+
+        <table class="form-table" style="margin-top:10px;">
+            <tr>
+                <td class="lbl">Monthly uncommitted income (X - Y) in BDT</td>
+                <td><div class="box">319513</div></td>
+                <td class="lbl"></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <div class="section-title" style="margin-top:14px;">2. Net Worth</div>
+        <div class="grid-2">
+            <table class="matrix">
+                <tr><th>Assets (Amount in Tk.)</th><th class="amt">Amount (BDT)</th></tr>
+                <tr><td>Savings A/C with Banks</td><td>594115</td></tr>
+                <tr><td>Current A/C with Banks</td><td>978150</td></tr>
+                <tr><td>Fixed deposit with Banks</td><td>3237450</td></tr>
+                <tr><td>Bonds</td><td>400381</td></tr>
+                <tr><td>Shares / certificates</td><td>660298</td></tr>
+                <tr><td>Land &amp; building</td><td>24757838</td></tr>
+                <tr><td>Motor vehicles</td><td>1973216</td></tr>
+                <tr><td>Investment in business</td><td>12487614</td></tr>
+                <tr><td>Precious metals</td><td>315699</td></tr>
+                <tr><td><strong>Total Assets (X)</strong></td><td>45404761</td></tr>
+            </table>
+
+            <table class="matrix">
+                <tr><th>Liabilities (Amount in Tk.)</th><th class="amt">Amount (BDT)</th></tr>
+                <tr><td>Loan from Banks</td><td>616148</td></tr>
+                <tr><td>Credit Card Liability</td><td>96385</td></tr>
+                <tr><td>Other Liabilities (including any guarantee given)</td><td>469754</td></tr>
+                <tr><td><strong>Total Liability (Y)</strong></td><td>1182287</td></tr>
+                <tr><td><strong>Net Worth (X - Y)</strong></td><td>44222474</td></tr>
+                <tr><td colspan="2" style="border:0; padding: 10px 0 0;">
+                    <div class="note" style="margin:0;">(If needed, attach additional sheets for details.)</div>
+                </td></tr>
+            </table>
+        </div>
+
+        <div class="page-break"></div>
+
+        <div class="section-title">E. Bank Account Details</div>
+        <div class="section-title" style="margin-top:10px;">I. Depository Account</div>
+        <table class="matrix">
+            <tr>
+                <th style="width:6%;">#</th>
+                <th style="width:26%;">Bank’s Name</th>
+                <th style="width:18%;">Branch</th>
+                <th style="width:18%;">Account no.</th>
+                <th style="width:14%;">Account type</th>
+                <th style="width:18%;">Average balance (Approx.)</th>
+            </tr>
+            <tr><td>1</td><td>Gonzalez and Sons</td><td>Bandarban</td><td>9186384822</td><td>Current</td><td>844515</td></tr>
+        </table>
+
+        <div class="section-title" style="margin-top:14px;">II. Loan with any Bank/Financial Institute/Employer</div>
+        <table class="matrix">
+            <tr>
+                <th style="width:6%;">#</th>
+                <th style="width:28%;">Lender’s Name</th>
+                <th style="width:18%;">Branch</th>
+                <th style="width:18%;">Account no.</th>
+                <th style="width:15%;">Amount outstanding (BDT)</th>
+                <th style="width:15%;">Monthly Repayment (BDT)</th>
+            </tr>
+            <tr><td>1</td><td>Miller, Caldwell and Nichols</td><td>Chittagong</td><td>6029668841</td><td>889587</td><td>29446</td></tr>
+        </table>
+
+        <div class="section-title" style="margin-top:14px;">III. Credit Card</div>
+        <table class="form-table">
+            <tr>
+                <td class="lbl">Credit Card</td>
+                <td colspan="3">
+                    <div class="checks">
+                        <span class="check"><span class="cb" style="background: #111827;"></span> Yes</span>
+                        <span class="check"><span class="cb"></span> No</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="lbl">Issuing Bank / Institution</td>
+                <td><div class="line">Barr Group</div></td>
+                <td class="lbl">Credit Card no.</td>
+                <td><div class="line">8297-4474-2837-9847</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Limit</td>
+                <td><div class="box">340940</div></td>
+                <td class="lbl">Outstanding (BDT)</td>
+                <td><div class="box">70284</div></td>
+            </tr>
+        </table>
+
+        <div class="page-break"></div>
+
+        <div class="section-title">G. Reference / Guarantor Details</div>
+        <table class="form-table">
+            <tr>
+                <td class="lbl">Name</td>
+                <td><div class="line">Caleb Gamble</div></td>
+                <td class="lbl">Relationship with applicant</td>
+                <td><div class="line">Friend</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Residence address</td>
+                <td colspan="3"><div class="box lg">Studio 10, House No. 72, TaraGanz Station, FatikDanga, Shariatpur, 1299</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Phone</td>
+                <td><div class="box">(298)865-7644x52070</div></td>
+                <td class="lbl">Email</td>
+                <td><div class="line">probinson@example.net</div></td>
+            </tr>
+            <tr>
+                <td class="lbl">Profession</td>
+                <td colspan="3"><div class="line">Marine scientist</div></td>
+            </tr>
+        </table>
+
+        <div class="signature-row">
+            <div class="sig">
+                <div class="line"></div>
+                Applicant's Signature
+            </div>
+            <div class="sig">
+                <div class="line"></div>
+                Authorized Officer
+            </div>
+        </div>
+
+        <button onclick="window.print()" class="no-print btn">Download as PDF / Print</button>
+    </div>
+
+</body>
+</html>

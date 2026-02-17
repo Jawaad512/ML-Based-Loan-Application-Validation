@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+Gonzalez and Sons
+Bandarban
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : Pedro Hickman                          ACCOUNT NO   : 9186384822
+ADDRESS : Apartment 3, House No. 50, Middle SubarnaGarh, ManiramGram, Gaibandha, 5177             ACCOUNT TYPE : CURRENT
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 15-JAN-2026
+
+PERIOD  : 01-AUG-2025 TO 15-JAN-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-AUG-25  BALANCE FORWARD                           0.00         0.00    50,000.00
+05-AUG-25  BUSINESS RECEIPT/Mooney and Sons          0.00   474,667.00   524,667.00
+12-AUG-25  EFT/RENT                             99,307.00         0.00   425,360.00
+16-AUG-25  TRF/LOAN REPAY                      106,033.00         0.00   319,327.00
+20-AUG-25  CASH DEP                                  0.00    48,847.00   368,174.00
+23-AUG-25  BILLPAY/UTILITY                     105,952.00         0.00   262,222.00
+05-SEP-25  BUSINESS RECEIPT/Mooney and Sons          0.00   372,878.00   635,100.00
+12-SEP-25  EFT/RENT                             94,804.00         0.00   540,296.00
+16-SEP-25  ATM WDL                              80,192.00         0.00   460,104.00
+20-SEP-25  EFT/OTHER INCOME                          0.00    33,701.00   493,805.00
+23-SEP-25  ATM WDL                              95,103.00         0.00   398,702.00
+28-SEP-25  POS/SHOPPING                         84,491.00         0.00   314,211.00
+05-OCT-25  BUSINESS RECEIPT/Mooney and Sons          0.00   420,445.00   734,656.00
+12-OCT-25  TRF/LOAN REPAY                       97,184.00         0.00   637,472.00
+16-OCT-25  BILLPAY/UTILITY                      95,491.00         0.00   541,981.00
+20-OCT-25  TRF/INCOMING                              0.00    45,826.00   587,807.00
+23-OCT-25  POS/SHOPPING                         80,168.00         0.00   507,639.00
+28-OCT-25  CC PMT                               84,243.00         0.00   423,396.00
+05-NOV-25  BUSINESS RECEIPT/Mooney and Sons          0.00   332,383.00   755,779.00
+12-NOV-25  TRF/LOAN REPAY                       86,082.00         0.00   669,697.00
+16-NOV-25  EFT/RENT                             82,056.00         0.00   587,641.00
+20-NOV-25  TRF/INCOMING                              0.00    60,539.00   648,180.00
+23-NOV-25  TRF/LOAN REPAY                       75,932.00         0.00   572,248.00
+28-NOV-25  ATM WDL                              83,785.00         0.00   488,463.00
+05-DEC-25  BUSINESS RECEIPT/Mooney and Sons          0.00   362,126.00   850,589.00
+12-DEC-25  ATM WDL                              97,334.00         0.00   753,255.00
+16-DEC-25  POS/SHOPPING                        104,858.00         0.00   648,397.00
+20-DEC-25  CASH DEP                                  0.00    77,737.00   726,134.00
+23-DEC-25  POS/SHOPPING                         95,929.00         0.00   630,205.00
+05-JAN-26  BUSINESS RECEIPT/Mooney and Sons          0.00   402,487.00 1,032,692.00
+12-JAN-26  CASH DEP                                  0.00    97,371.00 1,130,063.00
+12-JAN-26  TRF/LOAN REPAY                       88,810.00         0.00 1,041,253.00
+15-JAN-26  CC PMT                               87,176.00         0.00   954,077.00
+15-JAN-26  EFT/RENT                            109,562.00         0.00   844,515.00
+------------------------------------------------------------------------------------------
+                        <span class="bold">TOTALS:                 1,934,492.00  2,729,007.00    844,515.00</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+Franklin-Johnson
+Bagherhat
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : Tyler Wilson                          ACCOUNT NO   : 6461594286
+ADDRESS : Apartment 1, Holding No. 59, West ChouddahGhat, BegumGram, Rangpur, 3362             ACCOUNT TYPE : CURRENT
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 15-JAN-2026
+
+PERIOD  : 01-AUG-2025 TO 15-JAN-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-AUG-25  BALANCE FORWARD                           0.00         0.00   191,757.00
+05-AUG-25  SALARY/White-Thompson                     0.00   167,470.00   359,227.00
+12-AUG-25  CC PMT                               30,604.00         0.00   328,623.00
+16-AUG-25  POS/SHOPPING                         32,049.00         0.00   296,574.00
+20-AUG-25  CASH DEP                                  0.00    28,352.00   324,926.00
+23-AUG-25  EFT/RENT                             34,248.00         0.00   290,678.00
+28-AUG-25  POS/SHOPPING                         34,361.00         0.00   256,317.00
+05-SEP-25  SALARY/White-Thompson                     0.00   170,774.00   427,091.00
+12-SEP-25  POS/SHOPPING                         43,252.00         0.00   383,839.00
+16-SEP-25  ATM WDL                              49,964.00         0.00   333,875.00
+20-SEP-25  EFT/OTHER INCOME                          0.00    19,809.00   353,684.00
+23-SEP-25  POS/SHOPPING                         44,208.00         0.00   309,476.00
+05-OCT-25  SALARY/White-Thompson                     0.00   179,450.00   488,926.00
+12-OCT-25  TRF/LOAN REPAY                       37,395.00         0.00   451,531.00
+16-OCT-25  ATM WDL                              38,792.00         0.00   412,739.00
+20-OCT-25  CASH DEP                                  0.00    16,741.00   429,480.00
+23-OCT-25  BILLPAY/UTILITY                      31,905.00         0.00   397,575.00
+28-OCT-25  ATM WDL                              39,680.00         0.00   357,895.00
+05-NOV-25  SALARY/White-Thompson                     0.00   120,481.00   478,376.00
+12-NOV-25  BILLPAY/UTILITY                      46,872.00         0.00   431,504.00
+16-NOV-25  ATM WDL                              41,280.00         0.00   390,224.00
+20-NOV-25  EFT/OTHER INCOME                          0.00    24,604.00   414,828.00
+23-NOV-25  ATM WDL                              41,884.00         0.00   372,944.00
+05-DEC-25  SALARY/White-Thompson                     0.00   135,506.00   508,450.00
+12-DEC-25  ATM WDL                              62,372.00         0.00   446,078.00
+16-DEC-25  POS/SHOPPING                         69,473.00         0.00   376,605.00
+20-DEC-25  EFT/OTHER INCOME                          0.00    40,581.00   417,186.00
+05-JAN-26  SALARY/White-Thompson                     0.00   156,840.00   574,026.00
+12-JAN-26  CASH DEP                                  0.00    24,663.00   598,689.00
+12-JAN-26  POS/SHOPPING                         71,034.00         0.00   527,655.00
+15-JAN-26  BILLPAY/UTILITY                      72,702.00         0.00   454,953.00
+------------------------------------------------------------------------------------------
+                        <span class="bold">TOTALS:                   822,075.00  1,085,271.00    454,953.00</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>

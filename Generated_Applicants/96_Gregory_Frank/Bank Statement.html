@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+Campbell-Potter
+Nilphamari
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : Gregory Frank                          ACCOUNT NO   : 9991339277
+ADDRESS : Apartment 2, House No. 90, ManoharStand, DevTala, Chittagong, 6792             ACCOUNT TYPE : CURRENT
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 15-JAN-2026
+
+PERIOD  : 01-AUG-2025 TO 15-JAN-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-AUG-25  BALANCE FORWARD                           0.00         0.00    50,000.00
+05-AUG-25  BUSINESS RECEIPT/Goodwin-Hahn             0.00   391,039.00   441,039.00
+12-AUG-25  CC PMT                              143,088.00         0.00   297,951.00
+16-AUG-25  CC PMT                              133,722.00         0.00   164,229.00
+20-AUG-25  TRF/INCOMING                              0.00    79,681.00   243,910.00
+23-AUG-25  TRF/LOAN REPAY                      134,307.00         0.00   109,603.00
+05-SEP-25  BUSINESS RECEIPT/Goodwin-Hahn             0.00   340,690.00   450,293.00
+12-SEP-25  POS/SHOPPING                        212,479.00         0.00   237,814.00
+16-SEP-25  TRF/LOAN REPAY                      232,198.00         0.00     5,616.00
+20-SEP-25  CASH DEP                                  0.00   102,035.00   107,651.00
+05-OCT-25  BUSINESS RECEIPT/Goodwin-Hahn             0.00   359,881.00   467,532.00
+12-OCT-25  EFT/RENT                            111,325.00         0.00   356,207.00
+16-OCT-25  ATM WDL                              92,233.00         0.00   263,974.00
+20-OCT-25  TRF/INCOMING                              0.00    80,610.00   344,584.00
+23-OCT-25  POS/SHOPPING                        112,082.00         0.00   232,502.00
+28-OCT-25  EFT/RENT                             87,413.00         0.00   145,089.00
+05-NOV-25  BUSINESS RECEIPT/Goodwin-Hahn             0.00   412,866.00   557,955.00
+12-NOV-25  CC PMT                              245,626.00         0.00   312,329.00
+16-NOV-25  EFT/RENT                            250,336.00         0.00    61,993.00
+20-NOV-25  CASH DEP                                  0.00   134,763.00   196,756.00
+05-DEC-25  BUSINESS RECEIPT/Goodwin-Hahn             0.00   432,330.00   629,086.00
+12-DEC-25  ATM WDL                             126,411.00         0.00   502,675.00
+16-DEC-25  ATM WDL                             122,904.00         0.00   379,771.00
+20-DEC-25  EFT/OTHER INCOME                          0.00    87,719.00   467,490.00
+23-DEC-25  CC PMT                              129,822.00         0.00   337,668.00
+28-DEC-25  POS/SHOPPING                        122,080.00         0.00   215,588.00
+05-JAN-26  BUSINESS RECEIPT/Goodwin-Hahn             0.00   499,469.00   715,057.00
+12-JAN-26  EFT/OTHER INCOME                          0.00    40,168.00   755,225.00
+12-JAN-26  POS/SHOPPING                        238,177.00         0.00   517,048.00
+15-JAN-26  EFT/RENT                            223,543.00         0.00   293,505.00
+------------------------------------------------------------------------------------------
+                        <span class="bold">TOTALS:                 2,717,746.00  2,961,251.00    293,505.00</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>
