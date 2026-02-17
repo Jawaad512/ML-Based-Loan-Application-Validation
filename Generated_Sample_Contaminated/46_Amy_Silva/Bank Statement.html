@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+Brown-Edwards
+Panchagarh
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : Amy Silva                          ACCOUNT NO   : 3178055758
+ADDRESS : Flat 86, House No. 62, New MuradChar, QutubKhali, Netrokona, 5704             ACCOUNT TYPE : CURRENT
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 15-JAN-2026
+
+PERIOD  : 01-AUG-2025 TO 15-JAN-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-AUG-25  BALANCE FORWARD                           0.00         0.00   506,062.00
+05-AUG-25  PROFESSIONAL FEES/Dorsey Law Chambers         0.00   191,775.00   697,837.00
+12-AUG-25  EFT/RENT                             43,213.00         0.00   654,624.00
+16-AUG-25  TRF/LOAN REPAY                       48,323.00         0.00   606,301.00
+20-AUG-25  TRF/INCOMING                              0.00    27,102.00   633,403.00
+23-AUG-25  CC PMT                               48,340.00         0.00   585,063.00
+28-AUG-25  CC PMT                               46,177.00         0.00   538,886.00
+05-SEP-25  PROFESSIONAL FEES/Dorsey Law Chambers         0.00   243,485.00   782,371.00
+12-SEP-25  BILLPAY/UTILITY                      95,103.00         0.00   687,268.00
+16-SEP-25  CC PMT                               92,665.00         0.00   594,603.00
+20-SEP-25  TRF/INCOMING                              0.00    36,085.00   630,688.00
+05-OCT-25  PROFESSIONAL FEES/Dorsey Law Chambers         0.00   219,608.00   850,296.00
+12-OCT-25  CC PMT                               52,200.00         0.00   798,096.00
+16-OCT-25  ATM WDL                              48,126.00         0.00   749,970.00
+20-OCT-25  CASH DEP                                  0.00    58,500.00   808,470.00
+23-OCT-25  CC PMT                               56,385.00         0.00   752,085.00
+28-OCT-25  EFT/RENT                             61,332.00         0.00   690,753.00
+05-NOV-25  PROFESSIONAL FEES/Dorsey Law Chambers         0.00   198,783.00   889,536.00
+12-NOV-25  TRF/LOAN REPAY                       67,972.00         0.00   821,564.00
+16-NOV-25  CC PMT                               54,959.00         0.00   766,605.00
+20-NOV-25  EFT/OTHER INCOME                          0.00    32,753.00   799,358.00
+23-NOV-25  CC PMT                               67,646.00         0.00   731,712.00
+05-DEC-25  PROFESSIONAL FEES/Dorsey Law Chambers         0.00   178,158.00   909,870.00
+12-DEC-25  POS/SHOPPING                         96,822.00         0.00   813,048.00
+16-DEC-25  EFT/RENT                             85,591.00         0.00   727,457.00
+20-DEC-25  CASH DEP                                  0.00    43,122.00   770,579.00
+05-JAN-26  PROFESSIONAL FEES/Dorsey Law Chambers         0.00   238,885.00 1,009,464.00
+12-JAN-26  EFT/OTHER INCOME                          0.00    30,995.00 1,040,459.00
+12-JAN-26  EFT/RENT                             55,601.00         0.00   984,858.00
+15-JAN-26  POS/SHOPPING                         65,018.00         0.00   919,840.00
+15-JAN-26  TRF/LOAN REPAY                       65,800.00         0.00   854,040.00
+------------------------------------------------------------------------------------------
+                        <span class="bold">TOTALS:                 1,151,273.00  1,499,251.00    854,040.00</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+Mullen Group
+Kishoreganj
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : Linda Snow                          ACCOUNT NO   : 7910833456
+ADDRESS : Building No. 4, ManiramStand, IslamGram, Jhalokati, 7701             ACCOUNT TYPE : CURRENT
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 15-JAN-2026
+
+PERIOD  : 01-AUG-2025 TO 15-JAN-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-AUG-25  BALANCE FORWARD                           0.00         0.00    50,000.00
+05-AUG-25  BUSINESS RECEIPT/Clark PLC                0.00   327,495.00   377,495.00
+12-AUG-25  CC PMT                              119,365.00         0.00   258,130.00
+16-AUG-25  POS/SHOPPING                         98,642.00         0.00   159,488.00
+20-AUG-25  TRF/INCOMING                              0.00    53,073.00   212,561.00
+23-AUG-25  POS/SHOPPING                        107,926.00         0.00   104,635.00
+05-SEP-25  BUSINESS RECEIPT/Clark PLC                0.00   349,204.00   453,839.00
+12-SEP-25  TRF/LOAN REPAY                      182,890.00         0.00   270,949.00
+16-SEP-25  TRF/LOAN REPAY                      182,335.00         0.00    88,614.00
+20-SEP-25  CASH DEP                                  0.00   104,617.00   193,231.00
+05-OCT-25  BUSINESS RECEIPT/Clark PLC                0.00   394,699.00   587,930.00
+12-OCT-25  CC PMT                               96,116.00         0.00   491,814.00
+16-OCT-25  EFT/RENT                            100,068.00         0.00   391,746.00
+20-OCT-25  TRF/INCOMING                              0.00    54,010.00   445,756.00
+23-OCT-25  CC PMT                              102,127.00         0.00   343,629.00
+28-OCT-25  EFT/RENT                             89,554.00         0.00   254,075.00
+05-NOV-25  BUSINESS RECEIPT/Clark PLC                0.00   304,520.00   558,595.00
+12-NOV-25  TRF/LOAN REPAY                      165,032.00         0.00   393,563.00
+16-NOV-25  TRF/LOAN REPAY                      145,723.00         0.00   247,840.00
+20-NOV-25  CASH DEP                                  0.00    88,787.00   336,627.00
+05-DEC-25  BUSINESS RECEIPT/Clark PLC                0.00   412,426.00   749,053.00
+12-DEC-25  CC PMT                              159,124.00         0.00   589,929.00
+16-DEC-25  CC PMT                              175,278.00         0.00   414,651.00
+20-DEC-25  EFT/OTHER INCOME                          0.00    50,885.00   465,536.00
+05-JAN-26  BUSINESS RECEIPT/Clark PLC                0.00   362,588.00   828,124.00
+12-JAN-26  CASH DEP                                  0.00    33,146.00   861,270.00
+12-JAN-26  EFT/RENT                            173,050.00         0.00   688,220.00
+15-JAN-26  POS/SHOPPING                        187,284.00         0.00   500,936.00
+------------------------------------------------------------------------------------------
+                        <span class="bold">TOTALS:                 2,084,514.00  2,535,450.00    500,936.00</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>

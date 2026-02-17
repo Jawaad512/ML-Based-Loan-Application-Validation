@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+Obrien and Sons
+Pirojpur
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : Tamara Smith                          ACCOUNT NO   : 6918536146
+ADDRESS : Holding No. 49, New PalashRoad, FulDanga, Panchagarh, 3038             ACCOUNT TYPE : CURRENT
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 15-JAN-2026
+
+PERIOD  : 01-AUG-2025 TO 15-JAN-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-AUG-25  BALANCE FORWARD                           0.00         0.00   673,091.00
+05-AUG-25  SALARY/Perez, Harvey and Stokes           0.00    41,427.00   714,518.00
+12-AUG-25  CC PMT                               19,148.00         0.00   695,370.00
+16-AUG-25  EFT/RENT                             22,216.00         0.00   673,154.00
+20-AUG-25  EFT/OTHER INCOME                          0.00    12,581.00   685,735.00
+05-SEP-25  SALARY/Perez, Harvey and Stokes           0.00    49,445.00   735,180.00
+12-SEP-25  TRF/LOAN REPAY                       21,191.00         0.00   713,989.00
+16-SEP-25  BILLPAY/UTILITY                      21,700.00         0.00   692,289.00
+20-SEP-25  TRF/INCOMING                              0.00     5,411.00   697,700.00
+05-OCT-25  SALARY/Perez, Harvey and Stokes           0.00    41,510.00   739,210.00
+12-OCT-25  POS/SHOPPING                         12,440.00         0.00   726,770.00
+16-OCT-25  BILLPAY/UTILITY                      15,214.00         0.00   711,556.00
+20-OCT-25  TRF/INCOMING                              0.00     4,000.00   715,556.00
+23-OCT-25  TRF/LOAN REPAY                       15,265.00         0.00   700,291.00
+05-NOV-25  SALARY/Perez, Harvey and Stokes           0.00    36,259.00   736,550.00
+12-NOV-25  TRF/LOAN REPAY                       12,496.00         0.00   724,054.00
+16-NOV-25  EFT/RENT                             10,949.00         0.00   713,105.00
+20-NOV-25  TRF/INCOMING                              0.00     9,535.00   722,640.00
+23-NOV-25  TRF/LOAN REPAY                       12,184.00         0.00   710,456.00
+28-NOV-25  POS/SHOPPING                         10,637.00         0.00   699,819.00
+05-DEC-25  SALARY/Perez, Harvey and Stokes           0.00    37,754.00   737,573.00
+12-DEC-25  EFT/RENT                             19,451.00         0.00   718,122.00
+16-DEC-25  BILLPAY/UTILITY                      24,767.00         0.00   693,355.00
+20-DEC-25  EFT/OTHER INCOME                          0.00     9,677.00   703,032.00
+05-JAN-26  SALARY/Perez, Harvey and Stokes           0.00    41,207.00   744,239.00
+12-JAN-26  CASH DEP                                  0.00    13,458.00   757,697.00
+12-JAN-26  BILLPAY/UTILITY                      16,150.00         0.00   741,547.00
+15-JAN-26  TRF/LOAN REPAY                       17,101.00         0.00   724,446.00
+15-JAN-26  POS/SHOPPING                         16,092.00         0.00   708,354.00
+15-JAN-26  TRF/INCOMING                              0.00   205,000.00   913,354.00
+------------------------------------------------------------------------------------------
+                        <span class="bold">TOTALS:                   267,001.00    507,264.00    913,354.00</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>

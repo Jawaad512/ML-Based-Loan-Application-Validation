@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee ID Card - Fixed</title>
+    <style>
+        :root {
+            --primary-bg: #1e293b;
+            --accent-color: #3b82f6;
+            --text-main: #334155;
+            --card-width: 320px;
+            --card-height: 520px; /* Slightly increased height */
+        }
+
+        body {
+            background-color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .id-card {
+            width: var(--card-width);
+            height: var(--card-height);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* FIXED HEADER: Added padding and adjusted height */
+        .header {
+            background: var(--primary-bg);
+            height: 140px; 
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 18px 18px 0; /* left aligned org name */
+            color: white;
+            position: relative;
+        }
+
+        .logo-area {
+            font-weight: 800;
+            font-size: 1.02rem;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            z-index: 5;
+            width: 100%;
+            text-align: left;
+            line-height: 1.15;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            max-width: 260px; /* encourages wrap like reference */
+        }
+
+        /* FIXED PHOTO CONTAINER: Adjusted bottom positioning */
+        .photo-container {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            border: 5px solid white;
+            position: absolute;
+            top: 85px; /* Fixed position from top to prevent overlap with logo */
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Pushed content down further to accommodate the photo */
+        .content {
+            margin-top: 85px; 
+            text-align: center;
+            padding: 0 20px;
+            flex-grow: 1;
+        }
+
+        .name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-bg);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .designation {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin: 5px 0 15px 0;
+            letter-spacing: 1px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            text-align: left;
+        }
+
+        .detail-label {
+            color: #94a3b8;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .detail-value {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .footer {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+        }
+
+        .qr-placeholder {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .id-number {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        .lanyard-hole {
+            width: 35px;
+            height: 6px;
+            background: #334155;
+            border-radius: 10px;
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 15;
+        }
+
+        @media print {
+            body { background: none; }
+            .id-card { box-shadow: none; border: 1px solid #ddd; }
+            .no-print { display: none; }
+        }
+
+        .no-print.controls{
+            position: fixed;
+            left: 50%;
+            bottom: 22px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 9999;
+        }
+
+        .btn{
+            background: #111827;
+            color: #fff;
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+        }
+        .btn.secondary{ background: #334155; }
+        .btn:hover{ filter: brightness(1.05); }
+    </style>
+</head>
+<body>
+
+    <div class="id-card">
+        <div class="lanyard-hole"></div>
+        
+        <div class="header">
+            <div class="logo-area">Perez, Harvey and Stokes</div>
+            <div class="photo-container">
+                <div style="color: #64748b; font-size: 10px; text-align: center;">PHOTO</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1 class="name">Tamara Smith</h1>
+            <p class="designation">Chief Technology Officer</p>
+
+            <div class="details-grid">
+                <div>
+                    <div class="detail-label">Joined</div>
+                    <div class="detail-value">March 2024</div>
+                </div>
+                <div>
+                    <div class="detail-label">Blood Group</div>
+                    <div class="detail-value">O Positive</div>
+                </div>
+                <div>
+                    <div class="detail-label">Phone</div>
+                    <div class="detail-value">+1 555 0123</div>
+                </div>
+                <div>
+                    <div class="detail-label">Expiry</div>
+                    <div class="detail-value">Dec 2028</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="qr-placeholder">
+                <div style="width:40px; height:40px; background: repeating-linear-gradient(45deg, #333 0 2px, transparent 2px 4px);"></div>
+            </div>
+            <div class="id-number">EMP-ID: EMP-83229</div>
+        </div>
+    </div>
+
+    <div class="no-print controls">
+        <button class="btn" type="button" onclick="downloadCard('.id-card','employee-id.png')">Download PNG</button>
+        <button class="btn secondary" type="button" onclick="window.print()">Print</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+        async function downloadCard(selector, filename) {
+            const el = document.querySelector(selector);
+            if (!el) return;
+            const canvas = await html2canvas(el, { scale: 3, backgroundColor: null });
+            const a = document.createElement('a');
+            a.href = canvas.toDataURL('image/png');
+            a.download = filename || 'employee-id.png';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        }
+    </script>
+
+</body>
+</html>

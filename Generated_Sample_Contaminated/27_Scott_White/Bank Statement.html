@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+Wright PLC
+Kurigram
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : Scott White                          ACCOUNT NO   : 5926423504
+ADDRESS : Building No. 1, East MollaGan, JibonBari, Rangpur, 6326             ACCOUNT TYPE : CURRENT
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 15-JAN-2026
+
+PERIOD  : 01-AUG-2025 TO 15-JAN-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-AUG-25  BALANCE FORWARD                           0.00         0.00   104,552.00
+05-AUG-25  SALARY/Moore and Sons                     0.00   173,042.00   277,594.00
+12-AUG-25  EFT/RENT                             46,454.00         0.00   231,140.00
+16-AUG-25  POS/SHOPPING                         47,806.00         0.00   183,334.00
+20-AUG-25  CASH DEP                                  0.00    31,352.00   214,686.00
+23-AUG-25  POS/SHOPPING                         43,732.00         0.00   170,954.00
+05-SEP-25  SALARY/Moore and Sons                     0.00   178,483.00   349,437.00
+12-SEP-25  BILLPAY/UTILITY                      52,196.00         0.00   297,241.00
+16-SEP-25  EFT/RENT                             51,603.00         0.00   245,638.00
+20-SEP-25  TRF/INCOMING                              0.00    12,854.00   258,492.00
+23-SEP-25  TRF/LOAN REPAY                       51,768.00         0.00   206,724.00
+05-OCT-25  SALARY/Moore and Sons                     0.00   181,253.00   387,977.00
+12-OCT-25  ATM WDL                              36,182.00         0.00   351,795.00
+16-OCT-25  ATM WDL                              30,536.00         0.00   321,259.00
+20-OCT-25  TRF/INCOMING                              0.00    56,543.00   377,802.00
+23-OCT-25  ATM WDL                              35,874.00         0.00   341,928.00
+28-OCT-25  EFT/RENT                             38,034.00         0.00   303,894.00
+05-NOV-25  SALARY/Moore and Sons                     0.00   177,469.00   481,363.00
+12-NOV-25  TRF/LOAN REPAY                       76,937.00         0.00   404,426.00
+16-NOV-25  EFT/RENT                             60,757.00         0.00   343,669.00
+20-NOV-25  EFT/OTHER INCOME                          0.00    44,982.00   388,651.00
+05-DEC-25  SALARY/Moore and Sons                     0.00   209,794.00   598,445.00
+12-DEC-25  EFT/RENT                             39,492.00         0.00   558,953.00
+16-DEC-25  POS/SHOPPING                         34,661.00         0.00   524,292.00
+20-DEC-25  CASH DEP                                  0.00    17,587.00   541,879.00
+23-DEC-25  EFT/RENT                             40,893.00         0.00   500,986.00
+28-DEC-25  POS/SHOPPING                         33,039.00         0.00   467,947.00
+05-JAN-26  SALARY/Moore and Sons                     0.00   202,362.00   670,309.00
+12-JAN-26  CASH DEP                                  0.00    22,489.00   692,798.00
+12-JAN-26  ATM WDL                              43,691.00         0.00   649,107.00
+15-JAN-26  ATM WDL                              49,544.00         0.00   599,563.00
+15-JAN-26  ATM WDL                              42,167.00         0.00   557,396.00
+------------------------------------------------------------------------------------------
+                        <span class="bold">TOTALS:                   855,366.00  1,308,210.00    557,396.00</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>

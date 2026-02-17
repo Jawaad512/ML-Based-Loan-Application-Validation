@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+Edwards Group
+Bagherhat
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : Karl Roberts                          ACCOUNT NO   : 668325737
+ADDRESS : Studio 71, House No. 201, South BajitHar Highway, AnwarHat, Narayanganj, 3935             ACCOUNT TYPE : CURRENT
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 15-JAN-2026
+
+PERIOD  : 01-AUG-2025 TO 15-JAN-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-AUG-25  BALANCE FORWARD                           0.00         0.00    50,000.00
+05-AUG-25  BUSINESS RECEIPT/Fowler-Sanchez           0.00   265,707.00   315,707.00
+12-AUG-25  EFT/RENT                             82,229.00         0.00   233,478.00
+16-AUG-25  EFT/RENT                             73,925.00         0.00   159,553.00
+20-AUG-25  TRF/INCOMING                              0.00    21,382.00   180,935.00
+23-AUG-25  POS/SHOPPING                         78,610.00         0.00   102,325.00
+05-SEP-25  BUSINESS RECEIPT/Fowler-Sanchez           0.00   273,320.00   375,645.00
+12-SEP-25  POS/SHOPPING                        127,034.00         0.00   248,611.00
+16-SEP-25  BILLPAY/UTILITY                     109,323.00         0.00   139,288.00
+20-SEP-25  EFT/OTHER INCOME                          0.00    36,688.00   175,976.00
+05-OCT-25  BUSINESS RECEIPT/Fowler-Sanchez           0.00   253,319.00   429,295.00
+12-OCT-25  ATM WDL                              86,714.00         0.00   342,581.00
+16-OCT-25  EFT/RENT                            105,117.00         0.00   237,464.00
+20-OCT-25  CASH DEP                                  0.00    24,840.00   262,304.00
+05-NOV-25  BUSINESS RECEIPT/Fowler-Sanchez           0.00   272,538.00   534,842.00
+12-NOV-25  POS/SHOPPING                        100,802.00         0.00   434,040.00
+16-NOV-25  BILLPAY/UTILITY                      85,912.00         0.00   348,128.00
+20-NOV-25  CASH DEP                                  0.00    29,560.00   377,688.00
+05-DEC-25  BUSINESS RECEIPT/Fowler-Sanchez           0.00   230,038.00   607,726.00
+12-DEC-25  POS/SHOPPING                         70,819.00         0.00   536,907.00
+16-DEC-25  ATM WDL                              71,456.00         0.00   465,451.00
+20-DEC-25  CASH DEP                                  0.00    38,242.00   503,693.00
+23-DEC-25  CC PMT                               81,921.00         0.00   421,772.00
+05-JAN-26  BUSINESS RECEIPT/Fowler-Sanchez           0.00   262,986.00   684,758.00
+12-JAN-26  TRF/INCOMING                              0.00    25,973.00   710,731.00
+12-JAN-26  ATM WDL                              57,787.00         0.00   652,944.00
+15-JAN-26  CC PMT                               50,864.00         0.00   602,080.00
+15-JAN-26  TRF/LOAN REPAY                       60,523.00         0.00   541,557.00
+15-JAN-26  CC PMT                               62,193.00         0.00   479,364.00
+------------------------------------------------------------------------------------------
+                        <span class="bold">TOTALS:                 1,305,229.00  1,734,593.00    479,364.00</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>

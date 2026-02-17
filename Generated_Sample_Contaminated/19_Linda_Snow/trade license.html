@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade License Template</title>
+    <style>
+        :root {
+            --primary-color: #1a2a3a;
+            --border-color: #333;
+            --bg-paper: #ffffff;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            color: #333;
+        }
+
+        .license-container {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 0 auto;
+            background: var(--bg-paper);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* Watermark Effect */
+        .license-container::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/8/84/Government_Seal_of_Bangladesh.svg') no-repeat center;
+            background-size: contain;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .qr-area { width: 100px; }
+        .qr-code { width: 80px; height: 80px; border: 1px solid #ccc; display: block; margin-bottom: 5px;}
+        
+        .center-logo {
+            text-align: center;
+            flex-grow: 1;
+        }
+        .govt-logo { width: 60px; margin-bottom: 5px; }
+        .pourashava-name { font-size: 16px; font-weight: bold; margin: 0; }
+        .website { font-size: 10px; color: #0056b3; }
+
+        .photo-area {
+            width: 100px;
+            text-align: right;
+        }
+        .photo-box {
+            width: 90px;
+            height: 110px;
+            border: 1px solid #000;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eee;
+        }
+
+        .license-title-block {
+            text-align: center;
+            margin: 10px 0;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+        }
+        .license-title { font-size: 18px; font-weight: bold; text-decoration: underline; margin: 5px 0; }
+        .license-no { font-size: 16px; font-weight: bold; margin-bottom: 10px; }
+
+        .legal-text {
+            font-size: 10px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .form-grid {
+            width: 100%;
+            border-collapse: collapse;
+            z-index: 1;
+            position: relative;
+        }
+
+        .form-grid td {
+            padding: 4px 0;
+            vertical-align: top;
+        }
+
+        .label { font-weight: bold; width: 220px; display: inline-block; }
+        .field-value { border-bottom: none; font-weight: bold; }
+
+        .address-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .address-box h4 { margin: 5px 0; text-decoration: underline; }
+
+        .fee-table {
+            width: 100%;
+            margin-top: 15px;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+        .fee-table td { padding: 3px 0; width: 50%; }
+
+        .validity {
+            font-size: 12px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .footer-signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .sig-line {
+            border-top: 1px solid #000;
+            width: 200px;
+            padding-top: 5px;
+            font-weight: bold;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .license-container { box-shadow: none; margin: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="license-container">
+    <div class="header-section">
+        <div class="qr-area">
+            <div class="qr-code"></div>
+            <strong>License Details</strong><br>
+            Date: 15-02-2026<br>
+            Time: 03:30 pm
+        </div>
+        <div class="center-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Government_Seal_of_Bangladesh.svg" class="govt-logo" alt="Seal">
+            <h1 class="pourashava-name">Generic Pourashava</h1>
+            <div class="website">Website: www.pourashava.gov.bd</div>
+            <div class="license-title">Trade License</div>
+        </div>
+        <div class="photo-area">
+            <div class="photo-box">PHOTO</div>
+        </div>
+    </div>
+
+    <div class="license-title-block">
+        <div class="license-no">Trade License No: TL-6055565</div>
+    </div>
+
+    <div class="legal-text">
+        This trade license is issued under Generic Pourashava taxation statutes 2016, article 10 governed by Local Government (Municipality) Law, 2009 article 84.
+    </div>
+
+    <div class="form-grid">
+        <p><span class="label">1. Name of Business Organisation:</span> <span class="field-value">Haha Benis Inc.</span></p>
+        <p><span class="label">2. Owner's/Proprietor's Name:</span> <span class="field-value">Full Name of Owner</span></p>
+        <p><span class="label">3. Mother's Name:</span> <span class="field-value">Mother's Name Here</span></p>
+        <p><span class="label">4. Father's Name:</span> <span class="field-value">Father's Name Here</span></p>
+        <p><span class="label">5. Spouse's Name (If applicable):</span> <span class="field-value">-----------------------</span></p>
+        <p><span class="label">6. Nature of Business (Individual/Joint/Others):</span> <span class="field-value">Individual</span></p>
+        <p><span class="label">7. Business Type:</span> <span class="field-value">General Trading / Services</span></p>
+        <p><span class="label">8. Address of Business Organisation:</span> <span class="field-value">Office 123, Business District, City</span></p>
+        
+        <div style="display: flex;">
+            <p style="width: 50%;"><span class="label" style="width: 100px;">9. (A) Zone:</span> <span class="field-value">01</span></p>
+            <p style="width: 50%;"><span class="label" style="width: 100px;">(B) Ward No:</span> <span class="field-value">12</span></p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+            <p><strong>10. (A) NID / Passport No:</strong> 1234567890</p>
+            <p><strong>(B) TIN:</strong> -----------</p>
+            <p><strong>(C) BIN:</strong> -----------</p>
+            <p><strong>(D) Mobile Number:</strong> 01700-000000</p>
+        </div>
+
+        <div style="display: flex;">
+            <p style="width: 50%;"><strong>11. (A) Fiscal Year:</strong> 2025-26</p>
+            <p style="width: 50%;"><strong>(B) Business Starting Date:</strong> 01-01-2024</p>
+        </div>
+    </div>
+
+    <div class="address-section">
+        <div class="address-box">
+            <h4>Present Address of Owner</h4>
+            Village/Area: Dhaka<br>
+            Post Office: Main City<br>
+            Post Code: 1200<br>
+            District: Dhaka
+        </div>
+        <div class="address-box">
+            <h4>Permanent Address of Owner</h4>
+            Village/Area: Tangail<br>
+            Post Office: Town Center<br>
+            Post Code: 1900<br>
+            District: Tangail
+        </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <strong>14. Trade License Fee (Renewal)</strong>
+        <table class="fee-table">
+            <tr>
+                <td>New: 0</td>
+                <td>Signboard Fee: 1500</td>
+            </tr>
+            <tr>
+                <td>Renewal: 3000</td>
+                <td>Income Tax: 2000</td>
+            </tr>
+            <tr>
+                <td>Arrear: 0</td>
+                <td>VAT: 600</td>
+            </tr>
+            <tr>
+                <td>Surcharge: 0</td>
+                <td>Service Charge: 200</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right; padding-top: 10px;"><strong>Total: 7300</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="validity">
+        Validity of this trade license is up to 30-06-2026
+    </div>
+
+    <div class="footer-signatures">
+        <div>
+            <div class="sig-line">Municipality Executive Officer</div>
+            Generic Pourashava
+        </div>
+        <div>
+            <div class="sig-line">Mayor</div>
+            Generic Pourashava
+        </div>
+    </div>
+</div>
+
+<div style="text-align: center; margin-top: 20px;" class="no-print">
+    <button onclick="window.print()" style="padding: 10px 20px; cursor: pointer; background: #1a2a3a; color: white; border: none; border-radius: 4px;">Print Trade License</button>
+</div>
+
+</body>
+</html>

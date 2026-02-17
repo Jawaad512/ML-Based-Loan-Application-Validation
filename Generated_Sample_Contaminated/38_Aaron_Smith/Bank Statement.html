@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+Solis-Jensen
+Lakshmipur
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : Aaron Smith                          ACCOUNT NO   : 5771689481
+ADDRESS : Studio 32, Holding No. 588, New KaliaStation, QutubGanz, Dinajpur, 3193             ACCOUNT TYPE : CURRENT
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 15-JAN-2026
+
+PERIOD  : 01-AUG-2025 TO 15-JAN-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-AUG-25  BALANCE FORWARD                           0.00         0.00   424,058.00
+05-AUG-25  PROFESSIONAL FEES/Gonzalez Chamber         0.00   149,117.00   573,175.00
+12-AUG-25  CC PMT                               38,174.00         0.00   535,001.00
+16-AUG-25  CC PMT                               38,971.00         0.00   496,030.00
+20-AUG-25  TRF/INCOMING                              0.00    35,385.00   531,415.00
+23-AUG-25  BILLPAY/UTILITY                      32,019.00         0.00   499,396.00
+28-AUG-25  ATM WDL                              31,688.00         0.00   467,708.00
+05-SEP-25  PROFESSIONAL FEES/Gonzalez Chamber         0.00   160,106.00   627,814.00
+12-SEP-25  POS/SHOPPING                         71,814.00         0.00   556,000.00
+16-SEP-25  CC PMT                               64,117.00         0.00   491,883.00
+20-SEP-25  TRF/INCOMING                              0.00    34,585.00   526,468.00
+05-OCT-25  PROFESSIONAL FEES/Gonzalez Chamber         0.00   184,491.00   710,959.00
+12-OCT-25  POS/SHOPPING                         36,704.00         0.00   674,255.00
+16-OCT-25  TRF/LOAN REPAY                       40,443.00         0.00   633,812.00
+20-OCT-25  TRF/INCOMING                              0.00    32,654.00   666,466.00
+23-OCT-25  POS/SHOPPING                         47,694.00         0.00   618,772.00
+28-OCT-25  TRF/LOAN REPAY                       35,588.00         0.00   583,184.00
+05-NOV-25  PROFESSIONAL FEES/Gonzalez Chamber         0.00   177,206.00   760,390.00
+12-NOV-25  BILLPAY/UTILITY                      42,409.00         0.00   717,981.00
+16-NOV-25  TRF/LOAN REPAY                       40,153.00         0.00   677,828.00
+20-NOV-25  TRF/INCOMING                              0.00    33,865.00   711,693.00
+23-NOV-25  BILLPAY/UTILITY                      44,536.00         0.00   667,157.00
+05-DEC-25  PROFESSIONAL FEES/Gonzalez Chamber         0.00   212,923.00   880,080.00
+12-DEC-25  POS/SHOPPING                         60,781.00         0.00   819,299.00
+16-DEC-25  BILLPAY/UTILITY                      77,319.00         0.00   741,980.00
+20-DEC-25  CASH DEP                                  0.00    17,149.00   759,129.00
+05-JAN-26  PROFESSIONAL FEES/Gonzalez Chamber         0.00   171,039.00   930,168.00
+12-JAN-26  EFT/OTHER INCOME                          0.00    45,634.00   975,802.00
+12-JAN-26  POS/SHOPPING                         35,064.00         0.00   940,738.00
+15-JAN-26  BILLPAY/UTILITY                      34,233.00         0.00   906,505.00
+15-JAN-26  ATM WDL                              32,088.00         0.00   874,417.00
+15-JAN-26  BILLPAY/UTILITY                      36,121.00         0.00   838,296.00
+------------------------------------------------------------------------------------------
+                        <span class="bold">TOTALS:                   839,916.00  1,254,154.00    838,296.00</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>
