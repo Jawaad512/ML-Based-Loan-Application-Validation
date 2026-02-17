@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>e-TIN Certificate Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page { size: A4; margin: 0; }
+        body { font-family: 'Times New Roman', Times, serif; background-color: #525659; padding: 40px; }
+        .certificate-paper {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            margin: auto;
+            padding: 20mm;
+            position: relative;
+            border: 1px solid #d3d3d3;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .border-double-custom {
+            border: 4px double #333;
+            height: 100%;
+            padding: 40px;
+        }
+        .gov-logo { width: 80px; height: 80px; margin: 0 auto; }
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.05;
+            width: 400px;
+            pointer-events: none;
+        }
+        .tin-number { font-size: 1.25rem; font-weight: bold; font-family: Arial, sans-serif; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+<div class="certificate-paper">
+    <div class="border-double-custom">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Government_Seal_of_Bangladesh.svg" class="watermark" alt="watermark">
+
+        <div class="text-center space-y-1">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Government_Seal_of_Bangladesh.svg" class="gov-logo mb-2" alt="Gov Logo">
+            <h1 class="text-lg font-bold">Government of the People's Republic of Bangladesh</h1>
+            <h2 class="text-md font-bold text-green-800">National Board of Revenue</h2>
+            <h3 class="text-sm font-semibold underline pt-2">Taxpayer's Identification Number (TIN) Certificate</h3>
+        </div>
+
+        <div class="mt-10 text-center">
+            <p class="text-sm">TIN : <span class="tin-number"></span></p>
+        </div>
+
+        <div class="mt-8 text-sm leading-relaxed">
+            <p>This is to Certify that <b></b> is a Registered Taxpayer of National Board of Revenue under the jurisdiction of 
+            <b>Taxes Circle-089 (SME)</b>, <b>Taxes Zone 12, Dhaka</b>.</p>
+        </div>
+
+        <div class="mt-8 space-y-4 text-sm">
+            <h4 class="font-bold border-b w-40">Taxpayer's Particulars:</h4>
+            
+            <div class="grid grid-cols-[180px_1fr] gap-2">
+                <div>1) Name</div><div>: HABIBUR RAHMAN</div>
+                
+                <div>2) Father's Name</div><div>: MOKSHED MOROL</div>
+                
+                <div>3) Mother's Name</div><div>: HASIA BEGUM</div>
+                
+                <div class="align-top">4.a) Current Address</div>
+                <div>: Plot 12, Road 05, Sector 07, Uttara, Dhaka-1230, Bangladesh</div>
+                
+                <div class="align-top">4.b) Permanent Address</div>
+                <div>: Vill: Tangail Sadar, P.O: Tangail, Dist: Tangail, Bangladesh</div>
+                
+                <div>5) Previous TIN</div><div>: Not Applicable</div>
+                
+                <div>6) Status</div><div>: Individual</div>
+            </div>
+        </div>
+
+        <div class="mt-10 text-sm">
+            <p>Date : <b>February 13, 2026</b></p>
+        </div>
+
+        <div class="mt-16 flex justify-between items-end">
+            <div class="w-1/2 text-[10px] space-y-2">
+                <p class="font-bold italic">Please Note:</p>
+                <p>1. A Taxpayer is liable to file the Return of Income under section 75 of the Income Tax Ordinance, 1984.</p>
+                <p>2. Failure to file Return of Income under section 75 is liable to penalty and assessment under section 89 and 93.</p>
+            </div>
+
+            <div class="text-center">
+                <div class="w-32 h-32 border-2 border-gray-300 flex items-center justify-center mb-2 bg-white">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=TIN:331408987542|Name:HABIBUR_RAHMAN|Zone:12" alt="QR Code">
+                </div>
+                <div class="text-[10px] leading-tight">
+                    <p class="font-bold">Deputy Commissioner of Taxes</p>
+                    <p>Taxes Circle-089</p>
+                    <p>Taxes Zone 12, Dhaka</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-0 right-0 text-center text-[9px] text-gray-400">
+            N.B: This is a system generated certificate and requires no seal or signature.
+        </div>
+    </div>
+</div>
+
+<div class="flex justify-center mt-10 no-print">
+    <button onclick="window.print()" class="bg-green-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-green-700 transition">Print / Save as PDF</button>
+</div>
+
+</body>
+</html>

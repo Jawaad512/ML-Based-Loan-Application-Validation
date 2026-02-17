@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CIB Report Mockup - PoC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page { size: A4; margin: 5mm; }
+        body { font-family: 'Arial', sans-serif; font-size: 9px; color: #111; background-color: #f3f4f6; padding: 20px; }
+        .cib-container { background: #fff; width: 210mm; min-height: 297mm; padding: 10mm; margin: auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        
+        .cib-header { background-color: #fff; border-bottom: 2px solid #000; margin-bottom: 10px; }
+        .section-title { background-color: #b9e2f5; font-weight: bold; padding: 2px 5px; text-transform: uppercase; border: 1px solid #999; margin-top: 10px; }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 0px; table-layout: fixed; }
+        th, td { border: 1px solid #ccc; padding: 3px 5px; text-align: left; vertical-align: top; overflow: hidden; }
+        .label { background-color: #f9f9f9; font-weight: normal; color: #444; width: 120px; }
+        .value { font-weight: bold; }
+        .confidential { text-align: right; font-size: 10px; font-weight: bold; color: #000; }
+    </style>
+</head>
+<body>
+
+<div class="cib-container">
+    <div class="flex justify-between items-start confidential">
+        <span>CONFIDENTIAL</span>
+        <span>27-Aug-2020-17:25:09</span>
+    </div>
+
+    <div class="text-center mt-4">
+        <h1 class="text-lg font-bold">Credit Information Bureau - Bangladesh Bank</h1>
+    </div>
+
+    <table class="mt-4">
+        <thead>
+            <tr class="bg-gray-50">
+                <th>Date of Inquiry</th>
+                <th>User ID</th>
+                <th>FI Code</th>
+                <th>Branch Code</th>
+                <th>FI Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="value">
+                <td>27-Aug-2020 05:25:06 PM</td>
+                <td>SIN057635</td>
+                <td>057</td>
+                <td>0016</td>
+                <td>Al-Arafah Islami Bank Ltd.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">INQUIRED</div>
+    <table>
+        <tr>
+            <td class="label">Trade name</td><td class="value" colspan="3">ALAM DAIRY FARM</td>
+        </tr>
+        <tr>
+            <td class="label">Proprietorship District</td><td class="value">CHATTOGRAM</td>
+            <td class="label">Proprietorship Postal code</td><td class="value">4370</td>
+        </tr>
+        <tr>
+            <td class="label">Proprietorship Address</td><td class="value">GOBINDARKHIL, WARD # 09, PATIYA POUROSHOVA</td>
+            <td class="label">NID</td><td class="value">1526109682777</td>
+        </tr>
+        <tr>
+            <td class="label">Owner Name</td><td class="value">SHAFIUL ALAM (MONI)</td>
+            <td class="label">Owner Address</td><td class="value">TALUKDAR BARI, GOBINDARKHIL, PATIYA POUROSHOVA</td>
+        </tr>
+        <tr>
+            <td class="label">Father's name</td><td class="value">NURUL ALAM</td>
+            <td class="label">Postcode</td><td class="value">4371</td>
+        </tr>
+        <tr>
+            <td class="label">Mother's name</td><td class="value">ROWSHAN ARA BEGUM</td>
+            <td class="label">District</td><td class="value">CHATTOGRAM</td>
+        </tr>
+        <tr>
+            <td class="label">DOB</td><td class="value">10/03/1978</td>
+            <td class="label">TIN</td><td class="value"></td>
+        </tr>
+    </table>
+
+    <div class="p-1 bg-green-100 border border-green-300 text-[8px] my-1 inline-block">Matched found</div>
+
+    <div class="section-title">SUBJECT INFORMATION</div>
+    <table>
+        <tr>
+            <td class="label">CIB subject code:</td><td class="value text-blue-700">G0000263775</td>
+            <td class="label">Type of subject:</td><td class="value">INDIVIDUAL</td>
+        </tr>
+        <tr>
+            <td class="label">Title, Name:</td><td class="value">MD, SHAFIUL ALAM (MONI)</td>
+            <td class="label">Reference number (Ref.):</td><td class="value">1 (CIB Subject Code:G0000263775)</td>
+        </tr>
+        <tr>
+            <td class="label">Title, Father's name:</td><td class="value">MOHAMMAD, NURUL ALAM</td>
+            <td class="label">Sector type:</td><td class="value">PRIVATE</td>
+        </tr>
+        <tr>
+            <td class="label">Title, Mother's name:</td><td class="value">MOSAMMAT, ROWSHAN ARA BEGUM</td>
+            <td class="label">Sector code:</td><td class="value">903050 (Retail Traders)</td>
+        </tr>
+        <tr>
+            <td class="label">Title, Spouse Name:</td><td class="value">MOSAMMAT, FARAHANA YESMIN</td>
+            <td class="label">ID type:</td><td class="value"></td>
+        </tr>
+        <tr>
+            <td class="label">Date of birth:</td><td class="value">10/03/1978</td>
+            <td class="label">ID number:</td><td class="value"></td>
+        </tr>
+        <tr>
+            <td class="label">Gender:</td><td class="value">MALE</td>
+            <td class="label">ID issue date:</td><td class="value"></td>
+        </tr>
+        <tr>
+            <td class="label">District(Country):</td><td class="value">CHATTOGRAM(BD)</td>
+            <td class="label">ID issue country:</td><td class="value"></td>
+        </tr>
+        <tr>
+            <td class="label">NID:</td><td class="value">1526109682777</td>
+            <td class="label">Telephone:</td><td class="value"></td>
+        </tr>
+        <tr>
+            <td class="label">TIN:</td><td class="value"></td>
+            <td class="label">Remarks:</td><td class="value"></td>
+        </tr>
+    </table>
+
+    <div class="section-title">ADDRESS</div>
+    <table>
+        <tr class="bg-gray-50 font-bold">
+            <td>Address Type</td><td>Address</td><td>Postal code:</td><td>District</td><td>Country</td>
+        </tr>
+        <tr>
+            <td>Permanent</td><td>TALUKDER BARI, NORTH GOBINDARKHIL, PATIYA,</td><td>4370</td><td>CHATTOGRAM</td><td>BD</td>
+        </tr>
+        <tr>
+            <td>Present</td><td>TALUKDER BARI, NORTH GOBINDARKHIL, PATIYA,</td><td>4370</td><td>CHATTOGRAM</td><td>BD</td>
+        </tr>
+    </table>
+
+    <div class="no-print mt-10 text-center">
+        <button onclick="window.print()" class="bg-blue-600 text-white px-8 py-2 rounded text-xs font-bold uppercase shadow-lg hover:bg-blue-700">Generate Report PDF</button>
+    </div>
+</div>
+
+<!-- ===================== PAGE 2 ===================== -->
+<div class="cib-container">
+    <div class="flex justify-between items-start confidential">
+      <span>CONFIDENTIAL</span>
+      <span>27 Aug 2020-17:25:09</span>
+    </div>
+  
+    <div class="section-title">ADDRESS</div>
+    <table>
+      <tr class="table-head">
+        <td style="width:70px;">Address Type</td>
+        <td>Address</td>
+        <td style="width:70px;">Postal code:</td>
+        <td style="width:90px;">District</td>
+        <td style="width:55px;">Country</td>
+      </tr>
+      <tr>
+        <td>Business</td>
+        <td>TALUKDAR BARI UTTOR GOVINDARKHIL PATIYA POUROSHOVA PATIYA</td>
+        <td>4370</td>
+        <td>CHATTOGRAM</td>
+        <td>BD</td>
+      </tr>
+      <tr>
+        <td>Factory</td>
+        <td>HADGAON PATIYA</td>
+        <td>4370</td>
+        <td>CHATTOGRAM</td>
+        <td>BD</td>
+      </tr>
+    </table>
+  
+    <div class="section-title">PROPRIETORSHIP CONCERN</div>
+    <table>
+      <tr>
+        <td class="label">CIB subject code:</td><td class="value text-blue-700">R0000782951</td>
+        <td class="label">Reference number (Ref.):</td><td class="value">3 (CIB Subject Code:R0000782951)</td>
+        <td class="label">Trade Name:</td><td class="value">S ALAM DAIRY FIRM</td>
+      </tr>
+      <tr>
+        <td class="label">Sector type:</td><td class="value">PRIVATE</td>
+        <td class="label">Sector code:</td><td class="value">903050 (Retail Traders)</td>
+        <td class="label">Telephone number:</td><td class="value"></td>
+      </tr>
+    </table>
+  
+    <div class="section-title">ADDRESS</div>
+    <table>
+      <tr class="table-head">
+        <td style="width:70px;">Address Type</td>
+        <td>Address</td>
+        <td style="width:70px;">Postal code:</td>
+        <td style="width:90px;">District</td>
+        <td style="width:55px;">Country</td>
+      </tr>
+      <tr>
+        <td>Business</td>
+        <td>HADGAON, POTIYA POUROSHOVA</td>
+        <td>4370</td>
+        <td>CHATTOGRAM</td>
+        <td>BD</td>
+      </tr>
+    </table>
+  
+    <div class="section-title">1. SUMMARY OF FACILITY(S) AS BORROWER &amp; CO-BORROWER</div>
+    <table>
+      <tr>
+        <td class="label">No of reporting institutes:</td><td class="value">1</td>
+        <td class="label">Total Overdue Amount:</td><td class="value">0</td>
+      </tr>
+      <tr>
+        <td class="label">No of Living Contracts:</td><td class="value">1</td>
+        <td class="label">No of Stay order contracts:</td><td class="value">0</td>
+      </tr>
+      <tr>
+        <td class="label">Total Outstanding Amount:</td><td class="value">455,089</td>
+        <td class="label">Total Outstanding amount for Stay Order Contracts:</td><td class="value">0</td>
+      </tr>
+    </table>
+  
+    <div class="section-title">1.(A) SUMMARY OF THE FUNDED FACILITIES AS BORROWER &amp; CO-BORROWER</div>
+    <table>
+      <tr><td class="label">Total Outstanding Amount:</td><td class="value">455,089</td></tr>
+    </table>
+  
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th rowspan="2" style="width:90px;">Contract Category</th>
+          <th colspan="2">UC</th>
+          <th colspan="2">SMA</th>
+          <th colspan="2">SS</th>
+          <th colspan="2">DF</th>
+          <th colspan="2">BL</th>
+          <th colspan="2">BLW</th>
+          <th colspan="2">Terminated</th>
+          <th colspan="2">Requested</th>
+          <th colspan="2">Stay Order</th>
+        </tr>
+        <tr class="subhead">
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Installments</td>
+          <td>1</td><td>455,089</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>1</td><td>700,000</td>
+          <td>0</td><td>0</td>
+        </tr>
+        <tr>
+          <td>Non-Installments</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>1</td><td>5,000,000</td>
+          <td>0</td><td>0</td>
+        </tr>
+        <tr>
+          <td>Credit Cards</td>
+          <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+          <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>1</td><td>455,089</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>0</td><td>0</td>
+          <td>2</td><td>5,700,000</td>
+          <td>0</td><td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="section-title">1.(B) SUMMARY OF THE NON-FUNDED FACILITIES AS BORROWER &amp; CO-BORROWER</div>
+    <table>
+      <tr><td class="label">Total Outstanding Amount:</td><td class="value">0</td></tr>
+    </table>
+  
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th rowspan="2" style="width:110px;">Type of Financing</th>
+          <th colspan="2">Living</th>
+          <th colspan="2">Terminated</th>
+          <th colspan="2">Requested</th>
+          <th colspan="2">Stay order</th>
+        </tr>
+        <tr class="subhead">
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Guarantee (GU)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Letter of credit (LC)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Other indirect facility (OF)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Total</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+  
+    <div class="section-title">2. SUMMARY OF FACILITY(S) AS GUARANTOR</div>
+    <table>
+      <tr>
+        <td class="label">No of reporting institutes:</td><td class="value">2</td>
+        <td class="label">Total Overdue Amount:</td><td class="value">0</td>
+      </tr>
+      <tr>
+        <td class="label">No of Living Contracts:</td><td class="value">2</td>
+        <td class="label">No of Stay order contracts:</td><td class="value">0</td>
+      </tr>
+      <tr>
+        <td class="label">Total Outstanding Amount:</td><td class="value">2,020,435</td>
+        <td class="label">Total Outstanding amount for Stay Order Contracts:</td><td class="value">0</td>
+      </tr>
+    </table>
+  
+    <div class="section-title">2.(A) SUMMARY OF THE FUNDED FACILITIES AS GUARANTOR</div>
+  
+    <div class="cib-footer">
+      <span>CONFIDENTIAL</span>
+      <span>27 Aug 2020-17:25:09</span>
+      <span>2/5</span>
+    </div>
+  </div>
+  
+  <!-- ===================== PAGE 3 ===================== -->
+  <div class="cib-container">
+    <div class="flex justify-between items-start confidential">
+      <span>CONFIDENTIAL</span>
+      <span>27 Aug 2020-17:25:09</span>
+    </div>
+  
+    <table style="margin-top:6px;">
+      <tr><td class="label">Total Outstanding Amount:</td><td class="value">2,020,435</td></tr>
+    </table>
+  
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th rowspan="2" style="width:90px;">Contract Category</th>
+          <th colspan="2">UC</th><th colspan="2">SMA</th><th colspan="2">SS</th><th colspan="2">DF</th>
+          <th colspan="2">BL</th><th colspan="2">BLW</th><th colspan="2">Terminated</th><th colspan="2">Requested</th><th colspan="2">Stay Order</th>
+        </tr>
+        <tr class="subhead">
+          <th>No.</th><th>Amount</th><th>No.</th><th>Amount</th><th>No.</th><th>Amount</th><th>No.</th><th>Amount</th>
+          <th>No.</th><th>Amount</th><th>No.</th><th>Amount</th><th>No.</th><th>Amount</th><th>No.</th><th>Amount</th><th>No.</th><th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Installments</td><td>1</td><td>23,042</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Non-Installments</td><td>1</td><td>1,997,393</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Credit Cards</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Total</td><td>2</td><td>2,020,435</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+  
+    <div class="section-title">2.(B) SUMMARY OF THE NON-FUNDED FACILITIES AS GUARANTOR</div>
+    <table><tr><td class="label">Total Outstanding Amount:</td><td class="value">0</td></tr></table>
+  
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th rowspan="2" style="width:110px;">Type of Financing</th>
+          <th colspan="2">Living</th><th colspan="2">Terminated</th><th colspan="2">Requested</th><th colspan="2">Stay order</th>
+        </tr>
+        <tr class="subhead"><th>No.</th><th>Amount</th><th>No.</th><th>Amount</th><th>No.</th><th>Amount</th><th>No.</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Guarantee (GU)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Letter of credit (LC)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Other indirect facility (OF)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>Total</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      </tbody>
+    </table>
+  
+    <div class="section-title">REQUESTED CONTRACT DETAILS</div>
+    <table>
+      <tr class="table-head">
+        <td style="width:24px;">SL</td>
+        <td style="width:70px;">Type of Contract</td>
+        <td>Facility</td>
+        <td style="width:62px;">Phase</td>
+        <td style="width:55px;">Role</td>
+        <td style="width:40px;">FI code</td>
+        <td style="width:60px;">Branch code</td>
+        <td style="width:70px;">Request date</td>
+        <td style="width:90px;">Total Requested Amount</td>
+        <td style="width:85px;">CIB subject code</td>
+        <td style="width:85px;">CIB contract code</td>
+        <td style="width:85px;">FI contract code</td>
+      </tr>
+      <tr>
+        <td>1</td><td>Installment</td><td>Bai-Muazzal (Installment Payment)</td><td>Requested</td><td>Borrower</td>
+        <td>057</td><td>0016</td><td>27/06/2019</td><td class="value">700,000</td>
+        <td class="value text-blue-700">R0000782951</td><td class="value">F0000699024</td><td class="value">F0000699024</td>
+      </tr>
+      <tr>
+        <td>2</td><td>NonInstallment</td><td>Bai-Muazzal</td><td>Requested</td><td>Borrower</td>
+        <td>057</td><td>0016</td><td>27/08/2020</td><td class="value">5,000,000</td>
+        <td class="value text-blue-700">Q0000204829</td><td class="value">H4358588474</td><td class="value">H4358588474</td>
+      </tr>
+    </table>
+  
+    <div class="section-title">DETAILS OF INSTALLMENT FACILITY(S)</div>
+    <table>
+      <tr class="table-head"><td style="width:50%;">Facility details</td><td style="width:50%;">Contract History</td></tr>
+      <tr>
+        <td style="padding:0;">
+          <table style="border:none;">
+            <tr><td class="label">Ref</td><td class="value">1 (CIB Subject Code:G0000263775)</td><td class="label">FI code</td><td class="value">###</td></tr>
+            <tr><td class="label">Branch code</td><td class="value">###</td><td class="label">CIB contract code</td><td class="value">Y0000470400</td></tr>
+            <tr><td class="label">FI contract code</td><td class="value">###</td><td class="label"></td><td class="value"></td></tr>
+            <tr><td class="label">Role:</td><td class="value">Guarantor</td><td class="label">Date of Last Update:</td><td class="value">-</td></tr>
+            <tr><td class="label">Phase:</td><td class="value">Living</td><td class="label">Date of Law suit:</td><td class="value">-</td></tr>
+            <tr><td class="label">Facility:</td><td class="value">Term Loan</td><td class="label">Date of last payment:</td><td class="value">31/03/2020</td></tr>
+            <tr><td class="label">Starting date:</td><td class="value">26/04/2018</td><td class="label">Date of classification:</td><td class="value">-</td></tr>
+            <tr><td class="label">End date of contract:</td><td class="value">25/04/2020</td><td class="label">Date of last rescheduling:</td><td class="value">-</td></tr>
+            <tr><td class="label">Sanction Limit:</td><td class="value">500,000</td><td class="label">Method of payment:</td><td class="value">Authorization to Direct Current Account Debit</td></tr>
+            <tr><td class="label">Total Disbursement Amount:</td><td class="value">500,000</td><td class="label">Payments periodicity:</td><td class="value">Monthly Installments</td></tr>
+            <tr><td class="label">Total number of installments:</td><td class="value">24</td><td class="label">Number of time(s) rescheduled:</td><td class="value">000000</td></tr>
+            <tr><td class="label">Installment Amount:</td><td class="value">22,843</td><td class="label">Remaining installments Amount:</td><td class="value">23,042</td></tr>
+            <tr><td class="label">Remaining installments Number:</td><td class="value">1</td><td class="label">Reorganized credit:</td><td class="value">NO</td></tr>
+            <tr><td class="label">Security Amount:</td><td class="value">0</td><td class="label">Basis for classification:</td><td class="value">qualitative judgment</td></tr>
+          </table>
+        </td>
+        <td style="padding:0;">
+          <table class="matrix" style="border:none;">
+            <thead><tr><th style="width:70px;">Date</th><th>Outstanding</th><th style="width:55px;">Overdue</th><th style="width:40px;">NPI</th><th style="width:55px;">Status</th><th style="width:55px;">Default</th></tr></thead>
+            <tbody>
+              <tr><td>30/06/2020</td><td>23,042</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/05/2020</td><td>23,042</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>30/04/2020</td><td>23,042</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/03/2020</td><td>23,042</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>29/02/2020</td><td>45,532</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/01/2020</td><td>67,838</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/12/2019</td><td>89,981</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>30/11/2019</td><td>111,968</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/10/2019</td><td>133,787</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>30/09/2019</td><td>155,436</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/08/2019</td><td>176,929</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/07/2019</td><td>198,258</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+  
+    <div class="cib-footer">
+      <span>CONFIDENTIAL</span>
+      <span>27 Aug 2020-17:25:09</span>
+      <span>3/5</span>
+    </div>
+  </div>
+  
+  <!-- ===================== PAGE 4 ===================== -->
+  <div class="cib-container">
+    <div class="flex justify-between items-start confidential">
+      <span>CONFIDENTIAL</span>
+      <span>27 Aug 2020-17:25:09</span>
+    </div>
+  
+    <table style="margin-top:6px;">
+      <tr><td class="label">Third Party guarantee Amount:</td><td class="value">0</td><td class="label">Remarks:</td><td class="value"></td></tr>
+      <tr><td class="label">Security Type:</td><td class="value"></td><td class="label"></td><td class="value"></td></tr>
+    </table>
+  
+    <div class="section-title" style="text-transform:none;">Other subjects linked to the same contract</div>
+    <table>
+      <tr class="table-head"><td style="width:120px;">CIB subject code</td><td style="width:80px;">Role</td><td>Name</td></tr>
+      <tr><td class="value text-blue-700">K0000349203</td><td class="value">Borrower</td><td class="value">FARHANA DAIRY FARM</td></tr>
+      <tr><td class="value text-blue-700">D0000855248</td><td class="value">Guarantor</td><td class="value">LIAKAT ALI</td></tr>
+    </table>
+  
+    <div class="section-title">DETAILS OF NONINSTALLMENT FACILITY(S)</div>
+    <table>
+      <tr class="table-head"><td style="width:50%;">Facility details</td><td style="width:50%;">Contract History</td></tr>
+      <tr>
+        <td style="padding:0;">
+          <table style="border:none;">
+            <tr><td class="label">Ref</td><td class="value">1 (CIB Subject Code:G0000263775)</td><td class="label">FI code</td><td class="value">###</td></tr>
+            <tr><td class="label">Branch code</td><td class="value">###</td><td class="label">CIB contract code</td><td class="value">Y0000505239</td></tr>
+            <tr><td class="label">FI contract code</td><td class="value">###</td><td class="label"></td><td class="value"></td></tr>
+            <tr><td class="label">Role:</td><td class="value">Guarantor</td><td class="label">Date of Last Update:</td><td class="value">-</td></tr>
+            <tr><td class="label">Phase:</td><td class="value">Living</td><td class="label">Date of Law suit:</td><td class="value">-</td></tr>
+            <tr><td class="label">Facility:</td><td class="value">Working capital financing</td><td class="label">Date of last payment:</td><td class="value">-</td></tr>
+            <tr><td class="label">Starting date:</td><td class="value">07/01/2018</td><td class="label">Date of classification:</td><td class="value">-</td></tr>
+            <tr><td class="label">End date of contract:</td><td class="value">06/01/2019</td><td class="label">Date of last rescheduling:</td><td class="value">-</td></tr>
+            <tr><td class="label">Security Amount:</td><td class="value">0</td><td class="label">Number of time(s) rescheduled:</td><td class="value">000000</td></tr>
+            <tr><td class="label">Third Party guarantee Amount:</td><td class="value">0</td><td class="label">Reorganized credit:</td><td class="value">NO</td></tr>
+            <tr><td class="label">Security Type:</td><td class="value">50 (Real estate (Land,Building,Flat,etc.))</td><td class="label">Basis for classification:</td><td class="value">qualitative judgment</td></tr>
+            <tr><td class="label">Remarks:</td><td class="value"></td><td class="label"></td><td class="value"></td></tr>
+          </table>
+        </td>
+        <td style="padding:0;">
+          <table class="matrix" style="border:none;">
+            <thead><tr><th style="width:70px;">Date</th><th style="width:70px;">SancLmt</th><th>Outstand</th><th style="width:55px;">Overdue</th><th style="width:55px;">Status</th><th style="width:55px;">Default</th></tr></thead>
+            <tbody>
+              <tr><td>30/06/2020</td><td>2,000,000</td><td>1,997,393</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/05/2020</td><td>2,000,000</td><td>1,997,393</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>30/04/2020</td><td>2,000,000</td><td>1,997,393</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/03/2020</td><td>2,000,000</td><td>1,997,393</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>29/02/2020</td><td>2,000,000</td><td>1,997,393</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/01/2020</td><td>2,000,000</td><td>1,749,488</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/12/2019</td><td>2,000,000</td><td>1,749,488</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>30/11/2019</td><td>2,000,000</td><td>1,749,488</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/10/2019</td><td>2,000,000</td><td>1,749,488</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>30/09/2019</td><td>2,000,000</td><td>1,749,488</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/08/2019</td><td>2,000,000</td><td>1,749,488</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/07/2019</td><td>2,000,000</td><td>1,749,488</td><td>0</td><td>UC</td><td>No</td></tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+  
+    <div class="section-title" style="text-transform:none;">Other subjects linked to the same contract</div>
+    <table>
+      <tr class="table-head"><td style="width:120px;">CIB subject code</td><td style="width:80px;">Role</td><td>Name</td></tr>
+      <tr><td class="value text-blue-700">D0000378687</td><td class="value">Borrower</td><td class="value">FARHANA DAIRY FIRM</td></tr>
+    </table>
+  
+    <div class="section-title">DETAILS OF INSTALLMENT FACILITY(S)</div>
+    <table>
+      <tr class="table-head"><td style="width:50%;">Facility details</td><td style="width:50%;">Contract History</td></tr>
+      <tr>
+        <td style="padding:0;">
+          <table style="border:none;">
+            <tr><td class="label">Ref</td><td class="value">2 (CIB Subject Code:Q0000204829)</td><td class="label">FI code</td><td class="value">057</td></tr>
+            <tr><td class="label">Branch code</td><td class="value">0034</td><td class="label">CIB contract code</td><td class="value">B0000448544</td></tr>
+            <tr><td class="label">FI contract code</td><td class="value">1708330000161</td><td class="label"></td><td class="value"></td></tr>
+            <tr><td class="label">Role:</td><td class="value">Borrower</td><td class="label">Date of Last Update:</td><td class="value">-</td></tr>
+            <tr><td class="label">Phase:</td><td class="value">Living</td><td class="label">Date of Law suit:</td><td class="value">-</td></tr>
+            <tr><td class="label">Facility:</td><td class="value">Bai-Muazzal (Installment Payment)</td><td class="label">Date of last payment:</td><td class="value">-</td></tr>
+            <tr><td class="label">Starting date:</td><td class="value">16/07/2019</td><td class="label">Date of classification:</td><td class="value">-</td></tr>
+            <tr><td class="label">End date of contract:</td><td class="value">16/07/2022</td><td class="label">Date of last rescheduling:</td><td class="value">-</td></tr>
+            <tr><td class="label">Sanction Limit:</td><td class="value">500,000</td><td class="label">Method of payment:</td><td class="value">Other</td></tr>
+            <tr><td class="label">Total Disbursement Amount:</td><td class="value">500,000</td><td class="label">Payments periodicity:</td><td class="value">Monthly Installments</td></tr>
+            <tr><td class="label">Total number of installments:</td><td class="value">36</td><td class="label">Number of time(s) rescheduled:</td><td class="value">000000</td></tr>
+            <tr><td class="label">Installment Amount:</td><td class="value">17,430</td><td class="label">Remaining installments Amount:</td><td class="value">455,089</td></tr>
+            <tr><td class="label">Remaining installments Number:</td><td class="value">25</td><td class="label">Reorganized credit:</td><td class="value">NO</td></tr>
+          </table>
+        </td>
+        <td style="padding:0;">
+          <table class="matrix" style="border:none;">
+            <thead><tr><th style="width:70px;">Date</th><th>Outstanding</th><th style="width:55px;">Overdue</th><th style="width:40px;">NPI</th><th style="width:55px;">Status</th><th style="width:55px;">Default</th></tr></thead>
+            <tbody>
+              <tr><td>30/06/2020</td><td>455,089</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/05/2020</td><td>489,949</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>30/04/2020</td><td>489,949</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/03/2020</td><td>489,949</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>29/02/2020</td><td>507,379</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/01/2020</td><td>524,809</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/12/2019</td><td>542,389</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>30/11/2019</td><td>565,669</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/10/2019</td><td>577,099</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>30/09/2019</td><td>594,529</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+              <tr><td>31/08/2019</td><td>611,959</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+  
+    <div class="cib-footer">
+      <span>CONFIDENTIAL</span>
+      <span>27 Aug 2020-17:25:09</span>
+      <span>4/5</span>
+    </div>
+  </div>
+  
+  <!-- ===================== PAGE 5 ===================== -->
+  <div class="cib-container">
+    <div class="flex justify-between items-start confidential">
+      <span>CONFIDENTIAL</span>
+      <span>27 Aug 2020-17:25:09</span>
+    </div>
+  
+    <table>
+      <tr class="table-head"><td style="width:50%;">Facility details (continued)</td><td style="width:50%;">Contract History (continued)</td></tr>
+      <tr>
+        <td style="padding:0;">
+          <table style="border:none;">
+            <tr><td class="label">Security Amount:</td><td class="value">0</td><td class="label">Basis for classification:</td><td class="value">qualitative judgment</td></tr>
+            <tr><td class="label">Third Party guarantee Amount:</td><td class="value">1,000,000</td><td class="label">Remarks:</td><td class="value"></td></tr>
+            <tr><td class="label">Security Type:</td><td class="value">79 (Other Securities)</td><td class="label"></td><td class="value"></td></tr>
+          </table>
+        </td>
+        <td style="padding:0;">
+          <table class="matrix" style="border:none;">
+            <thead><tr><th style="width:70px;">Date</th><th>Outstanding</th><th style="width:55px;">Overdue</th><th style="width:40px;">NPI</th><th style="width:55px;">Status</th><th style="width:55px;">Default</th></tr></thead>
+            <tbody>
+              <tr><td>31/07/2019</td><td>629,389</td><td>0</td><td>0</td><td>UC</td><td>No</td></tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+  
+    <div class="section-title" style="text-transform:none;">Other subjects linked to the same contract</div>
+    <table>
+      <tr class="table-head"><td style="width:120px;">CIB subject code</td><td style="width:80px;">Role</td><td>Name</td></tr>
+      <tr><td class="value text-blue-700">A0000260682</td><td class="value">Guarantor</td><td class="value">MONIRUL ISLAM</td></tr>
+      <tr><td class="value text-blue-700">L8402088445</td><td class="value">Guarantor</td><td class="value">ABDUL AZIZ</td></tr>
+    </table>
+  
+    <div class="section-title">NOTES:</div>
+    <table>
+      <tr><td>
+        <ol class="list-decimal pl-4">
+          <li>For any inconsistency, Banks/NBFIs should communicate to CIB immediately.</li>
+          <li>FI codes indicate code of Banks/NBFIs</li>
+          <li>Information indicated with “#”, if any, have not been incorporated in CIB report due to stay order of the Honorable High Court.</li>
+          <li>In case of stay order on a borrower/owner/director/guarantor, Banks/NBFIs are advised to verify whether the stay order has been vacated or extended further.</li>
+          <li>All amounts are expressed in Taka.</li>
+        </ol>
+      </td></tr>
+    </table>
+  
+    <div class="cib-footer">
+      <span>CONFIDENTIAL</span>
+      <span>27 Aug 2020-17:25:09</span>
+      <span>5/5</span>
+    </div>
+  </div>
+
+</body>
+</html>

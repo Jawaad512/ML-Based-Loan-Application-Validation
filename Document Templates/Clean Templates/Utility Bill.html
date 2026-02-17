@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BPDB Electricity Bill Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { font-family: 'Arial', sans-serif; font-size: 11px; background-color: #f0f0f0; padding: 20px; color: #333; }
+        .bill-container { background: white; width: 210mm; padding: 15mm; margin: auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header-blue { color: #1e40af; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 5px; }
+        th, td { border: 1px solid #1e40af; padding: 4px; text-align: left; }
+        .bg-light-blue { background-color: #eff6ff; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .font-bold { font-weight: bold; }
+        .tear-off { border-top: 2px dashed #999; margin-top: 20px; padding-top: 20px; position: relative; }
+        .tear-off::after { content: "BILLPAY MARKED SHOP OR BANK & OFFICE COPY"; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; font-size: 9px; font-weight: bold; color: #1e40af; }
+    </style>
+</head>
+<body>
+
+<div class="bill-container">
+    <div class="flex justify-between items-start mb-4">
+        <div class="w-20">
+            <img src="https://upload.wikimedia.org/wikipedia/en/3/33/Bangladesh_Power_Development_Board_Logo.png" alt="BPDB Logo" class="w-16 h-16">
+            <p class="font-bold header-blue mt-1">CHITTAGONG</p>
+        </div>
+        <div class="text-center">
+            <p class="text-xs header-blue">LT CONSUMER (Single Register)</p>
+            <h1 class="text-xl font-bold header-blue">BANGLADESH POWER DEVELOPMENT BOARD</h1>
+            <h2 class="text-md font-bold header-blue">ELECTRICITY BILL</h2>
+        </div>
+        <div class="text-right">
+            <p class="font-bold">Balance: 664.00</p>
+            <div class="border border-yellow-500 p-1 mt-2 flex items-center gap-2">
+                <span class="text-xl">💡</span>
+                <span class="text-[8px] leading-tight text-left">শেখ হাসিনার উদ্যোগ<br>ঘরে ঘরে বিদ্যুৎ</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-0 border-t border-l border-blue-800">
+        <div class="col-span-4 border-r border-b border-blue-800 p-2">
+            <p class="font-bold"></p>
+            <p class="text-[10px] mt-1"></p>
+        </div>
+        <div class="col-span-8 grid grid-cols-4">
+            <div class="border-r border-b border-blue-800 p-1 bg-light-blue text-center">MONTH</div>
+            <div class="border-r border-b border-blue-800 p-1 bg-light-blue text-center">BILL NO</div>
+            <div class="border-r border-b border-blue-800 p-1 bg-light-blue text-center">CD</div>
+            <div class="border-r border-b border-blue-800 p-1 bg-light-blue text-center">ISSUE DATE</div>
+            <div class="border-r border-b border-blue-800 p-1 text-center font-bold">May-24</div>
+            <div class="border-r border-b border-blue-800 p-1 text-center font-bold">47912385</div>
+            <div class="border-r border-b border-blue-800 p-1 text-center font-bold">09</div>
+            <div class="border-r border-b border-blue-800 p-1 text-center font-bold">05/05/24</div>
+            
+            <div class="border-r border-b border-blue-800 p-1 bg-light-blue text-center">LOCATION</div>
+            <div class="border-r border-b border-blue-800 p-1 bg-light-blue text-center">BILL GROUP</div>
+            <div class="border-r border-b border-blue-800 p-1 bg-light-blue text-center">BOOK NO</div>
+            <div class="border-r border-b border-blue-800 p-1 bg-light-blue text-center">WALK ORD</div>
+            <div class="border-r border-b border-blue-800 p-1 text-center">T4</div>
+            <div class="border-r border-b border-blue-800 p-1 text-center">08</div>
+            <div class="border-r border-b border-blue-800 p-1 text-center">G75</div>
+            <div class="border-r border-b border-blue-800 p-1 text-center">4052</div>
+        </div>
+    </div>
+
+    <div class="mt-4 grid grid-cols-2 gap-4">
+        <table>
+            <tr class="bg-light-blue header-blue font-bold">
+                <td>CURRENT CHARGES</td>
+                <td class="text-right">TAKA</td>
+            </tr>
+            <tr><td>ELECTRICITY CHARGE</td><td class="text-right">591.74</td></tr>
+            <tr><td>DEMAND CHARGE</td><td class="text-right">60.00</td></tr>
+            <tr><td>MINIMUM CHARGE</td><td class="text-right">0.00</td></tr>
+            <tr><td>SERVICE CHARGE</td><td class="text-right">0.00</td></tr>
+            <tr class="font-bold border-t-2 border-blue-800">
+                <td>PRINCIPAL AMOUNT</td>
+                <td class="text-right">651.74</td></tr>
+            <tr><td>( 5.0000 ) VAT</td><td class="text-right">32.00</td></tr>
+            <tr class="bg-light-blue font-bold">
+                <td>BILL MONTH TOTAL</td>
+                <td class="text-right">683.74</td>
+            </tr>
+        </table>
+
+        <table>
+            <tr class="bg-light-blue header-blue font-bold">
+                <td>ADJUSTMENT/ARREAR</td>
+                <td class="text-right">TAKA</td>
+            </tr>
+            <tr><td>ADJ. PRINCIPAL</td><td class="text-right">0.26</td></tr>
+            <tr><td>ADJ. L.P.S</td><td class="text-right">0.00</td></tr>
+            <tr><td>ADJ. VAT</td><td class="text-right">0.00</td></tr>
+            <tr><td>CURR. & ARR. L.P.S</td><td class="text-right">0.00</td></tr>
+            <tr class="font-bold"><td>VAT TOTAL</td><td class="text-right">32.00</td></tr>
+            <tr class="bg-light-blue font-bold">
+                <td>AMOUNT TO BE PAID</td>
+                <td class="text-right">684.00</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="mt-10 flex justify-between items-end">
+        <div class="relative w-48 h-24 border-2 border-blue-500 rounded flex flex-col items-center justify-center text-blue-800 opacity-60 transform rotate-[-5deg]">
+            <p class="text-[8px] font-bold">FIRST SECURITY ISLAMI BANK LTD.</p>
+            <p class="text-lg font-bold">24 MAR 2024</p>
+            <p class="text-sm font-bold">CASH RECEIVE</p>
+        </div>
+        <div class="text-center">
+            <p class="border-t border-black pt-1 w-48 text-[9px] font-bold">EXECUTIVE / RESIDENT ENGINEER</p>
+            <p class="text-[10px] header-blue font-bold">CHITTAGONG</p>
+        </div>
+    </div>
+
+    <div class="tear-off mt-8 grid grid-cols-12 border-l border-t border-blue-400">
+        <div class="col-span-3 p-1 border-r border-b border-blue-400 bg-light-blue">SERIAL NO</div>
+        <div class="col-span-2 p-1 border-r border-b border-blue-400 bg-light-blue">LOCATION</div>
+        <div class="col-span-1 p-1 border-r border-b border-blue-400 bg-light-blue">BILLGR</div>
+        <div class="col-span-2 p-1 border-r border-b border-blue-400 bg-light-blue">BOOK NO</div>
+        <div class="col-span-2 p-1 border-r border-b border-blue-400 bg-light-blue">WORK ORD</div>
+        <div class="col-span-2 p-1 border-r border-b border-blue-400 bg-light-blue">BANK/BRANCH</div>
+        
+        <div class="col-span-3 p-1 border-r border-b border-blue-400 font-bold">RCVD. TK.</div>
+        <div class="col-span-2 p-1 border-r border-b border-blue-400">CHITTAGONG</div>
+        <div class="col-span-1 p-1 border-r border-b border-blue-400">08</div>
+        <div class="col-span-2 p-1 border-r border-b border-blue-400">G75</div>
+        <div class="col-span-2 p-1 border-r border-b border-blue-400">4052</div>
+        <div class="col-span-2 p-1 border-r border-b border-blue-400">01 / 0112</div>
+    </div>
+
+</div>
+
+<div class="text-center mt-6 no-print">
+    <button onclick="window.print()" class="bg-blue-800 text-white px-10 py-3 rounded shadow-lg font-bold hover:bg-blue-900">Download Bill as PDF</button>
+</div>
+
+</body>
+</html>

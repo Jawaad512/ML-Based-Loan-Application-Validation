@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement Stress Test</title>
+    <style>
+        @page { size: A4; margin: 10mm; }
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 10px; 
+            color: #111; 
+            background-color: #f0f0f0; 
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        
+        /* The "Paper" - with a slight skew to challenge OCR orientation */
+        .raw-container { 
+            width: 210mm; 
+            min-height: 297mm;
+            background: #fff; 
+            padding: 40mm 20mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            white-space: pre; 
+            position: relative;
+            transform: rotate(0.2deg); /* Mimics a slightly tilted scan */
+        }
+
+        /* Watermark to confuse text segmentation */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(0,0,0,0.03);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bold { font-weight: bold; }
+        .no-print { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 100; }
+        
+        button {
+            background: #111;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: none;
+            transition: 0.2s;
+        }
+        
+        button:hover { background: #333; transform: scale(1.05); }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .raw-container { box-shadow: none; transform: rotate(0.2deg); }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="raw-container">
+    <div class="watermark">DUPLICATE</div>
+{{COL:Bank Name}}
+{{COL:Bank Branch}}
+2, DIT AVENUE, MOTIJHEEL C/A
+DHAKA, BANGLADESH
+ 
+
+------------------------------------------------------------------------------------------
+<span class="bold">ACCOUNT STATEMENT</span>
+------------------------------------------------------------------------------------------
+NAME    : {{COL:GT_Doc_Statement_AccName}}                          ACCOUNT NO   : {{COL:GT_Doc_Statement_AccNo}}
+ADDRESS : {{COL:GT_Doc_Utility_Address}}             ACCOUNT TYPE : SAVINGS
+          BANGLADESH                              CURRENCY     : BDT
+          BANGLADESH                              ISSUE DATE   : 14-FEB-2026
+
+PERIOD  : 01-JAN-2026 TO 31-MAR-2026              CUSTOMER ID  : 02480167
+------------------------------------------------------------------------------------------
+DATE        PARTICULARS / DESCRIPTION             WITHDRAW        DEPOSIT        BALANCE
+------------------------------------------------------------------------------------------
+01-JAN-26   BALANCE FORWARD                           0.00           0.00      145,250.40
+05-JAN-26   SALARY/CARBOBON/JAN26                     0.00      85,000.00      230,250.40
+12-JAN-26   ATM WDL/UTTARA/BR0192/4482           20,000.00           0.00      210,250.40
+20-JAN-26   EFT/RENT INCOME/PLOT 12                   0.00      45,000.00      255,250.40
+15-FEB-26   CC PMT/AUTO-DEBIT/3342               12,450.00           0.00      242,800.40
+28-FEB-26   CASH DEP/DHAKA/MAIN                       0.00      10,000.00      252,800.40
+02-MAR-26   TRF/M. ISLAM/LOAN REPAYMENT          15,000.00           0.00      237,800.40
+10-MAR-26   SMS BANKING CHARGE                      230.00           0.00      237,570.40
+------------------------------------------------------------------------------------------
+            <span class="bold">TOTALS:                      47,680.00     {{COL:GT_Doc_Statement_TotalCredits}}      {{COL:GT_Doc_Statement_ClosingBalance}}</span>
+------------------------------------------------------------------------------------------
+
+THIS IS A COMPUTER GENERATED STATEMENT AND DOES NOT REQUIRE ANY SIGNATURE.
+FOR ANY DISCREPANCY PLEASE NOTIFY THE BANK WITHIN 15 DAYS.
+END OF STATEMENT
+</div>
+
+<div class="no-print">
+    <button onclick="window.print()">Print Statement for OCR Testing</button>
+</div>
+
+</body>
+</html>

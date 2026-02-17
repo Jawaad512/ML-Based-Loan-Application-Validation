@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bangladesh NID (Synthetic Mock)</title>
+  <style>
+    :root{
+      /* ID-1 */
+      --w: 85.6mm;
+      --h: 54mm;
+      --r: 4.8mm;
+      --b: 0.25mm;
+
+      /* preview */
+      --scale: 2.0;
+
+      --ink: #0f172a;
+      --muted: rgba(15,23,42,0.70);
+      --bg: #edf7ff; /* plain */
+      --green: #0a7a3f;
+      --red: #e11d48;
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin: 0;
+      background: #0b1220;
+      color: #e5e7eb;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+    }
+
+    .sheet{ display:grid; gap: 14px; }
+    .hint{
+      color: #cbd5e1;
+      font-size: 13px;
+      max-width: 980px;
+      line-height: 1.35;
+    }
+
+    .row{
+      display:flex;
+      gap: 18px;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .wrap{
+      width: calc(var(--w) * var(--scale));
+      height: calc(var(--h) * var(--scale));
+    }
+
+    .card{
+      width: var(--w);
+      height: var(--h);
+      border-radius: var(--r);
+      border: var(--b) solid rgba(15,23,42,0.55);
+      background: var(--bg);
+      color: var(--ink);
+      position: relative;
+      overflow: hidden;
+      transform: scale(var(--scale));
+      transform-origin: top left;
+      box-shadow: 0 22px 42px rgba(0,0,0,0.45);
+    }
+
+    /* shared */
+    /* Slightly smaller typography so everything fits like the reference */
+    .lbl{ font-size: 2.0mm; font-weight: 800; color: var(--muted); }
+    .val{ font-size: 2.6mm; font-weight: 900; color: rgba(15,23,42,0.98); }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; letter-spacing: 0.08em; }
+
+    /* ===== FRONT (absolute) ===== */
+    .front{
+      /* Chip defines the right boundary for most text (like the real NID) */
+      --chip-right: 5.2mm;
+      --chip-top: 22.2mm;
+      --chip-w: 11.6mm;
+      --chip-h: 9.0mm;
+      --chip-gap: 1.8mm;
+
+      --fields-left: 28.6mm; /* start of text column */
+      --text-right: calc(var(--chip-right) + var(--chip-w) + var(--chip-gap));
+    }
+
+    .front .seal{
+      position:absolute;
+      left: 3.4mm;
+      top: 3.2mm;
+      width: 8.6mm;
+      height: 8.6mm;
+      z-index: 2;
+      border-radius: 999px;
+      border: 0.35mm solid var(--green);
+      background: #fff;
+      display:grid;
+      place-items:center;
+    }
+    .front .seal:before{
+      content:"";
+      width: 4.2mm;
+      height: 4.2mm;
+      border-radius: 999px;
+      background: #ef4444;
+      border: 0.25mm solid #16a34a;
+      display:block;
+    }
+
+    /* Top texts are centered (middle aligned) like the reference */
+    .front .hdr{
+      position:absolute;
+      left: 0;
+      right: 0;
+      top: 2.5mm;
+      padding: 0 3.4mm;
+      text-align: center;
+      line-height: 1.08;
+      z-index: 1;
+    }
+    .front .hdr .hdr-bn{
+      font-weight: 900;
+      color: var(--green);
+      font-size: 2.9mm;
+      white-space: nowrap;
+    }
+    .front .hdr .hdr-en{
+      margin-top: 0.2mm;
+      font-weight: 850;
+      color: rgba(15,23,42,0.76);
+      font-size: 2.1mm;
+      white-space: nowrap;
+    }
+    .front .hdr .hdr-title{
+      margin-top: 0.45mm;
+      font-weight: 900;
+      font-size: 2.7mm;
+      color: rgba(15,23,42,0.86);
+      white-space: nowrap;
+    }
+    .front .hdr .hdr-title .bn{ font-weight: 900; }
+    .front .hdr .hdr-title .slash{ padding: 0 1.1mm; color: rgba(15,23,42,0.55); }
+    .front .hdr .hdr-title .en{ color: var(--red); font-weight: 950; }
+
+    .front .photo{
+      position:absolute;
+      left: 3.6mm;
+      top: 15.5mm;
+      width: 23mm;
+      height: 28mm;
+      border: 0.25mm solid rgba(15,23,42,0.35);
+      border-radius: 1.6mm;
+      background: #f8fafc;
+      display:grid;
+      place-items:center;
+      color: rgba(15,23,42,0.45);
+      font-weight: 900;
+      font-size: 2.3mm;
+      overflow: hidden;
+    }
+    .front .photo img{ width:100%; height:100%; object-fit: cover; display:none; }
+
+    .front .chip{
+      position:absolute;
+      right: var(--chip-right);
+      top: var(--chip-top);
+      width: var(--chip-w);
+      height: var(--chip-h);
+      border-radius: 1.2mm;
+      background: #d4af37;
+      border: 0.25mm solid rgba(120,88,0,0.6);
+    }
+
+    /* Left aligned fields; right edge stops before chip */
+    .front .f-name-bn,
+    .front .f-name-en,
+    .front .f-father,
+    .front .f-mother{
+      position:absolute;
+      left: var(--fields-left);
+      right: var(--text-right);
+      min-width: 0;
+    }
+    .front .f-name-bn{ top: 15.0mm; }
+    .front .f-name-en{ top: 22.0mm; }
+    .front .f-father{  top: 29.4mm; }
+    .front .f-mother{  top: 36.9mm; }
+
+    .front .f-name-bn .val,
+    .front .f-name-en .val,
+    .front .f-father .val,
+    .front .f-mother .val{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .front .bottom-block{
+      position:absolute;
+      left: var(--fields-left);
+      right: var(--text-right);
+      top: 44.3mm;
+      display:flex;
+      flex-direction: column;
+      gap: 1.2mm;
+      min-width: 0;
+    }
+
+    .front .bottom-block .kvline{
+      display:flex;
+      align-items: baseline;
+      gap: 1.4mm;
+      min-width: 0;
+      line-height: 1.1;
+    }
+    .front .bottom-block .lbl{
+      display:inline-block;
+      flex: 0 0 auto;
+      font-size: 1.85mm;
+    }
+    .front .bottom-block .val{
+      display:inline-block;
+      flex: 1 1 auto;
+      font-size: 2.45mm;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .front .bottom-block .val.mono{ letter-spacing: 0.04em; } /* tighter so NID fits too */
+
+    .front .sig{
+      position:absolute;
+      left: 4mm;
+      bottom: 3.6mm;
+      width: 22mm;
+      border-top: 0.25mm solid rgba(15,23,42,0.45);
+      padding-top: 1mm;
+      font-size: 2.0mm;
+      font-weight: 900;
+      color: rgba(15,23,42,0.55);
+      text-align: center;
+    }
+
+    /* ===== BACK (absolute) ===== */
+    .back .back-title{
+      position:absolute;
+      left: 3.6mm;
+      top: 3.2mm;
+      font-weight: 950;
+      color: var(--green);
+      font-size: 3.1mm;
+    }
+    .back .issue{
+      position:absolute;
+      right: 3.6mm;
+      top: 3.2mm;
+      text-align:right;
+      line-height: 1.05;
+    }
+    .back .issue .k{ font-size: 2.1mm; font-weight: 900; color: var(--muted); }
+    .back .issue .v{ font-size: 2.8mm; font-weight: 950; color: rgba(15,23,42,0.95); }
+
+    /* random-ish barcode design */
+    .back .barcode{
+      position:absolute;
+      left: 3.6mm;
+      right: 3.6mm;
+      top: 9.8mm;
+      height: 11.6mm;
+      border: 0.25mm solid rgba(15,23,42,0.35);
+      border-radius: 1.4mm;
+      background:
+        repeating-linear-gradient(90deg,
+          rgba(15,23,42,0.95) 0 0.5mm,
+          rgba(15,23,42,0.10) 0.5mm 1.2mm,
+          rgba(15,23,42,0.75) 1.2mm 1.5mm,
+          rgba(15,23,42,0.08) 1.5mm 2.1mm);
+      opacity: 0.85;
+    }
+
+    .back .addrbox{
+      position:absolute;
+      left: 3.6mm;
+      top: 23.2mm;
+      width: 62mm;
+      height: 20.5mm;
+      border: 0.25mm solid rgba(15,23,42,0.30);
+      border-radius: 1.6mm;
+      background: rgba(255,255,255,0.70);
+      padding: 2.2mm 2.4mm;
+    }
+    .back .addrrow{ display:flex; gap: 2mm; margin-bottom: 1.1mm; align-items: baseline; }
+    .back .k2{ width: 22mm; font-size: 2.1mm; font-weight: 950; color: var(--muted); }
+    .back .v2{ flex:1; font-size: 2.3mm; font-weight: 950; color: rgba(15,23,42,0.96); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .back .qr{
+      position:absolute;
+      right: 3.6mm;
+      top: 23.2mm;
+      width: 18mm;
+      height: 18mm;
+      border: 0.25mm solid rgba(15,23,42,0.35);
+      border-radius: 1.8mm;
+      background:
+        repeating-linear-gradient(90deg, rgba(15,23,42,0.85) 0 1.4mm, transparent 1.4mm 2.8mm),
+        repeating-linear-gradient(0deg, rgba(15,23,42,0.85) 0 1.4mm, transparent 1.4mm 2.8mm);
+      opacity: 0.75;
+    }
+
+    .back .mrz{
+      position:absolute;
+      left: 3.6mm;
+      right: 3.6mm;
+      bottom: 3.2mm;
+      border-top: 0.25mm solid rgba(15,23,42,0.35);
+      padding-top: 1.4mm;
+      font-size: 2.3mm;
+      letter-spacing: 0.12em;
+      color: rgba(15,23,42,0.90);
+      white-space: nowrap;
+      overflow: hidden;
+      line-height: 1.15;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    .printbar{ display:flex; justify-content:center; gap: 10px; flex-wrap: wrap; }
+    button{
+      background:#1d4ed8;
+      color:#fff;
+      border:0;
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor:pointer;
+      font-weight: 900;
+    }
+
+    @page{ size: A4; margin: 12mm; }
+    @media print{
+      body{ background:#fff; color:#000; display:block; padding:0; min-height:auto; }
+      .hint, .printbar{ display:none !important; }
+      :root{ --scale: 1; }
+      .wrap{ width: var(--w); height: var(--h); }
+      .card{ transform:none; box-shadow:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="hint">
+      Plain synthetic NID mock (front + back). Structure mimics a Bangladeshi NID layout, but all identifiers/barcodes are placeholders.
+      Edit values in <code>nidData</code> below, or set <code>window.nidData</code> before this runs.
+    </div>
+
+    <div class="row">
+      <div class="wrap">
+        <div class="card front" aria-label="NID Front">
+          <div class="seal" aria-hidden="true"></div>
+          <div class="hdr" aria-label="Header">
+            <div class="hdr-bn" id="gov_bn">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</div>
+            <div class="hdr-en" id="gov_en">Government of the People's Republic of Bangladesh</div>
+            <div class="hdr-title">
+              <span class="bn" id="card_sub">জাতীয় পরিচয়পত্র</span>
+              <span class="slash">/</span>
+              <span class="en" id="card_title">National ID Card</span>
+            </div>
+          </div>
+
+          <div class="photo" aria-label="Photo">
+            <img id="photo_img" alt="" />
+            <div id="photo_ph">PHOTO</div>
+          </div>
+
+          <div class="chip" aria-hidden="true"></div>
+
+          <div class="f-name-bn">
+            <div class="lbl">নাম</div>
+            <div class="val" id="name_bn"></div>
+          </div>
+          <div class="f-name-en">
+            <div class="lbl">Name</div>
+            <div class="val" id="name_en"></div>
+          </div>
+          <div class="f-father">
+            <div class="lbl">পিতা</div>
+            <div class="val" id="father_bn"></div>
+          </div>
+          <div class="f-mother">
+            <div class="lbl">মাতা</div>
+            <div class="val" id="mother_bn"></div>
+          </div>
+
+          <div class="sig">Signature</div>
+
+          <div class="bottom-block" aria-label="Date of birth and NID">
+            <div class="kvline">
+              <span class="lbl">Date of Birth</span>
+              <span class="val" id="dob"></span>
+            </div>
+            <div class="kvline">
+              <span class="lbl">NID No.</span>
+              <span class="val mono" id="nid_no"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <div class="card back" aria-label="NID Back">
+          <div class="back-title">ঠিকানা / Address</div>
+          <div class="issue">
+            <div class="k">Issue Date</div>
+            <div class="v" id="issue_date">01 Jan 2024</div>
+          </div>
+
+          <div class="barcode" aria-label="Barcode placeholder"></div>
+
+          <div class="addrbox" aria-label="Address block">
+            <div class="addrrow">
+              <div class="k2">ঠিকানা:</div>
+              <div class="v2" id="addr_bn"></div>
+            </div>
+            <div class="addrrow">
+              <div class="k2">Address:</div>
+              <div class="v2" id="addr_en"></div>
+            </div>
+            <div class="addrrow">
+              <div class="k2">Blood Group:</div>
+              <div class="v2" id="blood">B+</div>
+            </div>
+            <div class="addrrow" style="margin-bottom:0;">
+              <div class="k2">Place of Birth:</div>
+              <div class="v2" id="pob">DHAKA</div>
+            </div>
+          </div>
+
+          <div class="qr" aria-label="QR placeholder"></div>
+
+          <div class="mrz" aria-label="MRZ placeholder">
+            <div id="mrz1">I&lt;BGD0000000000&lt;&lt;0&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+            <div id="mrz2">0000000M0000000BGD&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="printbar">
+      <button onclick="window.print()">Print / Save as PDF</button>
+      <button type="button" onclick="downloadCard('.card.front','nid-front.png')">Download Front (PNG)</button>
+      <button type="button" onclick="downloadCard('.card.back','nid-back.png')">Download Back (PNG)</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    async function downloadCard(selector, filename) {
+      try {
+        if (typeof html2canvas !== "function") {
+          alert("Image export unavailable (html2canvas failed to load).");
+          return;
+        }
+        const el = document.querySelector(selector);
+        if (!el) return;
+
+        // Capture at true size (scale=1 in CSS), then render to high-res PNG.
+        const root = document.documentElement;
+        root.style.setProperty("--scale", "1");
+        await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+        const canvas = await html2canvas(el, {
+          scale: 4,
+          backgroundColor: null,
+          useCORS: true
+        });
+
+        root.style.removeProperty("--scale");
+        await new Promise((r) => requestAnimationFrame(r));
+
+        const a = document.createElement("a");
+        a.download = filename || "nid.png";
+        a.href = canvas.toDataURL("image/png");
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      } catch (e) {
+        try { document.documentElement.style.removeProperty("--scale"); } catch (_) {}
+        console.error(e);
+        alert("Failed to export image. Check console for details.");
+      }
+    }
+
+    // Optional photo injection (if caller sets window.nidData.photo_src)
+    try {
+      var nidData = window.nidData || {};
+      var img = document.getElementById("photo_img");
+      var ph = document.getElementById("photo_ph");
+      if (nidData.photo_src && img && ph) {
+        img.src = nidData.photo_src;
+        img.style.display = "block";
+        ph.style.display = "none";
+      }
+    } catch (e) {}
+
+    // Defensive: if the file ever contains duplicated markup,
+    // keep only the first rendered sheet (top/front+back pair).
+    try {
+      var sheets = document.querySelectorAll(".sheet");
+      for (var i = 1; i < sheets.length; i++) sheets[i].remove();
+    } catch (e) {}
+  </script>
+</body>
+</html>
